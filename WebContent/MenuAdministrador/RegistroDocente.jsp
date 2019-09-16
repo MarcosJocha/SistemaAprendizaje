@@ -91,14 +91,15 @@ padding-bottom:20px;
 							
 
 								<div class="form-group">
-									<label for="escuela" class="col-sm-3 control-label">Escuela:</label>
+									<label for="escuela" class="col-sm-3 control-label">Especialidad:</label>
 									<div class="col-sm-9">
-										<select size="1" class="form-control input-sm" id="escuela">
-											<option value="Ing.Sistemas">Ing.Sistemas</option>
-											<option value="Ing.Industrial">Ing.Industrial</option>
-											<option value="Ing.Civil">Ing.Civil</option>
-											<option value="Arquitectura">Arquitectura</option>
-											<option value="Ciencias Aeronauticas">Ciencias Aeronauticas</option>
+										<select size="1" class="form-control input-sm" id="Especialidad">
+											<option value="Matematicas">Matematicas</option>
+											<option value="Algebra">Trigonometria</option>
+											<option value="Algebra">Algebra</option>
+											<option value="Aritmetica">Aritmetica</option>
+											<option value="geometria">Geometria</option>
+											<option value="razma">Razonamiento Matematico</option>
 										</select>
 									</div>
 								</div>
@@ -166,115 +167,6 @@ padding-bottom:20px;
 	</div>
 
 	<jsp:include page="/resources/include/footer-resources.jsp"></jsp:include>
-<script>
 
-var form =$('#formDocente');
-form.validator().on('submit', function (e) {
-  if (e.isDefaultPrevented()) {
-	  
-  } else {
-	  e.preventDefault();
-	  var dataForm=form.serializeArray();
-	  	/*console.log(dataTelefonos);
-		dataForm.push(dataTelefonos);*/
-		dataForm=camposDinamicosPost(dataForm,"telefono");
-		dataForm=camposDinamicosPost(dataForm,"email");
-		dataForm=campoDocumentoDinamicosPost(dataForm,"documento");
-		dataForm=campoGradoDinamicosPost(dataForm,"gradoAcademico");
-	  $.ajax({
-		  url: "<%=getServletContext().getContextPath() %>/Gestionar_Docente",
-		  method: "POST",
-		  data: dataForm,
-		  dataType: "json",
-		  
-		}).done(function( respuesta ) {
-			console.log(respuesta);
-			if(respuesta.exito){
-				resetearFormulario(form);
-				$("#msj2").html(respuesta.mensaje);
-				$("#msj1").fadeToggle("fast", function() {
-					$("#msj1").delay(2000).fadeToggle(1000);
-				});;
-				
-			}
-		});
-    // everything looks good!
-  }
-});
-
-function resetearFormulario(form){
-	form[0].reset();
-	$("select[id*='combo_provincias']").prop('disabled', true);
-	$("select[id*='combo_distritos']").prop('disabled', true);
-	$("#table_gradoAcademico").bootstrapTable('load', []);
-	$("#table_telefono").bootstrapTable('load', []);
-	$("#table_documento").bootstrapTable('load', []);
-	$("#table_email").bootstrapTable('load', []);
-}
-
-function camposDinamicosPost(dataForm,campo){
-	
-	var dataTable=$('#table_'+campo).bootstrapTable('getData');
-	var nuevoCampo=[];
-	  $.each( dataTable, function( key, value ) {
-		  nuevoCampo.push({
-			  "id": value.id,
-			  "campo": value.valor
-		    });
-		});
-	  dataForm.push({name:"json_"+campo,value:JSON.stringify(nuevoCampo)});
-	  return dataForm;
-}
-
-function campoDocumentoDinamicosPost(dataForm,campo){
-	var dataTable=$('#table_'+campo).bootstrapTable('getData');
-	var nuevoCampo=[];
-	  $.each( dataTable, function( key, value ) {
-		  nuevoCampo.push({
-			  "id": value.id,
-			  "tipodoc":value.tipodoc,
-			  "campo": value.valor
-		    });
-		});
-	  dataForm.push({name:"json_"+campo,value:JSON.stringify(nuevoCampo)});
-	  return dataForm;
-}
-
-function campoGradoDinamicosPost(dataForm,campo){
-	var dataTable=$('#table_'+campo).bootstrapTable('getData');
-	var nuevoCampo=[];
-	  $.each( dataTable, function( key, value ) {
-		  nuevoCampo.push({
-			   "id": value.id,
-			   "gradoAcademico": value.gradoAcademico,
-	           "profesion":value.profesion,
-	           "especialidad": value.especialidad,
-	           "institucion":value.institucion,
-	           "fechaIngreso":value.fechaIngreso
-		    });
-		});
-	  dataForm.push({name:"json_"+campo,value:JSON.stringify(nuevoCampo)});
-	  return dataForm;
-}
-
-
-function validarFormulario(){
-	
-	var nombreCampo = document.getElementById("nombres").value;
-	var apellidoPCampo = document.getElementById("apeP").value;
-	var apellidoMCampo = document.getElementById("apeM").value;
-	var fechaNacimientoCampo = document.getElementById("fec_nac").value;
-	
-	
-	if(nombreCampo == ""){
-		sweetAlert("Error", "Ingrese nombres del docente", "error");
-	}else if(apellidoPCampo == ""){
-		sweetAlert("Error", "Ingrese apellido paterno del docente", "error");
-	}else if(apellidoMCampo == ""){
-		sweetAlert("Error", "Ingrese apellido materno del docente", "error");
-	}
-}
-
-</script>
 </body>
 </html>

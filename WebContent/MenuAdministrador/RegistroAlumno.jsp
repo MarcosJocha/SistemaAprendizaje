@@ -43,9 +43,11 @@
 
 			<!-- Contenido -->
 
+			
 			<div>
 				<form class="form-horizontal" data-toggle="validator" role="form" id="formDocente" name="formulario" enctype="multipart/form-data" method="post"
-				onsubmit = "return validarFormulario()">
+				onsubmit = "return validarFormulario()"
+				>
 					<input type="hidden" value="insert" name="tipoRegistro" id="tipoRegistro">
 					<div class="row">
 						<div class="col-md-6">
@@ -56,7 +58,7 @@
 
 
 							<fieldset>
-								<legend align="left">Datos Generales</legend>
+								<legend align="left">Datos Alumno</legend>
 								
 
 								<div class="form-group">
@@ -64,7 +66,7 @@
 									</label>
 									<div class="col-sm-9">
 										<input type="text" id="nombre" name="nombre"
-											class="form-control input-sm" />
+											required class="form-control input-sm" />
 									</div>
 								</div>
 
@@ -73,7 +75,7 @@
 										Paterno:</label>
 									<div class="col-sm-9">
 										<input id="apematerno" type="text" name="apepaterno"
-											class="form-control input-sm" />
+											required class="form-control input-sm" />
 									</div>
 								</div>
 
@@ -82,7 +84,7 @@
 										Materno:</label>
 									<div class="col-sm-9">
 										<input id ="apematerno" type="text" name="apematerno"
-											class="form-control input-sm"/>
+											required class="form-control input-sm"/>
 									</div>
 								</div>
 								
@@ -94,68 +96,7 @@
 									</div>
 								</div>
 
-							
-							</fieldset>
 
-							
-							<fieldset>
-								<legend align="left">Datos de Contacto</legend>
-
-
-								</br>
-
-								<div class="form-group">
-									<label for=persEncargada class="col-sm-3 control-label">Persona Contacto:</label>
-									<div class="col-sm-9">
-												<input type="email" class="form-control input-sm" id="persEncargada" />
-											</div>
-											
-								</div>
-
-								<div class="form-group">
-									<label for="dniEncargado" class="col-sm-3 control-label">DNI:</label>
-									<div class="col-sm-9">
-										<input id ="dniEncargado" type="text" name="dniEncargado"
-											class="form-control input-sm"/>
-											</div>
-					
-								</div>
-								
-								</br>
-
-								
-
-
-							</fieldset>
-						</div>
-						<div class="col-md-6">
-
-							<fieldset>
-								<legend align="left">Datos Condicion Ceguera</legend>
-								<label class="col-sm-3 control-label">Test Ceguera</label>
-									<div class="col-sm-9">
-								<div class="form-group">
-									<a href="http://www.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaMovil.jsp" target="_blank"><img src="<%=request.getContextPath()%>/Efectivas/img/sunat.png" alt=""> </a>
-								</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label">RUC:</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control input-sm"
-											required id="ruc" />
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Razon Social:</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control input-sm"
-											required id="razon" />
-									</div>
-								</div>
-								
-								
 								<div class="form-group">
 									<label class="col-sm-3 control-label">Direccion:</label>
 									<div class="col-sm-9">
@@ -163,21 +104,80 @@
 											required id="dirEmpresa" />
 									</div>
 								</div>
+								<div class="form-group">
+									<label for="escuela" class="col-sm-3 control-label">Grado:</label>
+									<div class="col-sm-9">
+										<select size="1" class="form-control input-sm" id="especialidad">
+											<option value="1">1ro Secundaria</option>
+											<option value="2">2do Secundaria</option>
+											<option value="3">3ro Secundaria</option>
+											<option value="4">4to Secundaria</option>
+											<option value="5">5to Secundaria</option>
+										</select>
+									</div>
+								</div>
+
 								
 
+							</fieldset>
+
+							
+							
+						</div>
+						<div class="col-md-6">
+
+							<fieldset>
+								<legend align="left">Datos Ceguera</legend>
+								<label class="col-sm-3 control-label">Test Ceguera:</label>
+									<div class="col-sm-9">
+								<div class="form-group">
+									<a href="http://www.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaMovil.jsp" target="_blank"><img src="<%=request.getContextPath()%>/Efectivas/img/sunat.png" alt=""> </a>
+								</div>
+								</div>
+
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Nivel Ceguera</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control input-sm"
+											required id="ruc" />
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="escuela" class="col-sm-3 control-label">Puntaje Test:</label>
+									<div class="col-sm-9">
+										<select size="1" class="form-control input-sm" id="especialidad">
+											<option value="20">20</option>
+											<option value="30">30</option>
+											<option value="50">50</option>
+											<option value="100">100</option>
+											<option value="150">150</option>
+											<option value="200">200</option>
+										</select>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Comentario</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control input-sm"
+											required id="razon" />
+									</div>
+								</div>
+								
 	
 								
 						</fieldset>
+
+								
+						</div>	
 						</div>
 
 						<div class="form-group" style="text-align:center" >
-							<input style="margin-top:20px" type="submit" value="Agregar" class="btn btn-primary">
+							<input style="margin-top:20px" type="submit" value="Registrar Practica" class="btn btn-primary">
 						</div>
 						
-						
-						
-					</div>
-<input type="hidden" name="nombre" value="" />
+
 				</form>
 				
 			</div>
