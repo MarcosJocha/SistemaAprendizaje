@@ -1,0 +1,12 @@
+package practicas.common.action;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RequireLogin {
+
+	
+	boolean value() default true;
+	
+}
