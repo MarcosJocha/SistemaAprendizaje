@@ -94,15 +94,15 @@
 									</div>
 								</div>
 
-								<div class="form-group">
-									<label for="escuela" class="col-sm-3 control-label">Especialidad:</label>
+							<div class="form-group">
+									<label for="escuela" class="col-sm-3 control-label">Grado:</label>
 									<div class="col-sm-9">
 										<select size="1" class="form-control input-sm" id="especialidad">
-											<option value="11">ARQUITECTURA</option>
-											<option value="12">CIENCIAS AERONAUTICAS</option>
-											<option value="13">INGENIERIA CIVIL</option>
-											<option value="14">INGENIERIA DE COMPUTACION Y SISTEMAS</option>
-											<option value="16">INGENIERIA INDUSTRIAL</option>
+											<option value="1">1ro Secundaria</option>
+											<option value="2">2do Secundaria</option>
+											<option value="3">3ro Secundaria</option>
+											<option value="4">4to Secundaria</option>
+											<option value="5">5to Secundaria</option>
 										</select>
 									</div>
 								</div>
@@ -162,44 +162,6 @@
 						</div>
 						<div class="col-md-6">
 
-							<fieldset>
-								<legend align="left">Datos Empresa</legend>
-								<label class="col-sm-3 control-label">Consulta RUC:</label>
-									<div class="col-sm-9">
-								<div class="form-group">
-									<a href="http://www.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaMovil.jsp" target="_blank"><img src="<%=request.getContextPath()%>/Efectivas/img/sunat.png" alt=""> </a>
-								</div>
-								</div>
-
-								<div class="form-group">
-									<label class="col-sm-3 control-label">RUC:</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control input-sm"
-											required id="ruc" />
-									</div>
-								</div>
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Razon Social:</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control input-sm"
-											required id="razon" />
-									</div>
-								</div>
-								
-								
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Direccion:</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control input-sm"
-											required id="dirEmpresa" />
-									</div>
-								</div>
-								
-
-	
-								
-						</fieldset>
 						</div>
 
 						<div class="form-group" style="text-align:center" >

@@ -131,7 +131,7 @@
 								<label class="col-sm-3 control-label">Test Ceguera:</label>
 									<div class="col-sm-9">
 								<div class="form-group">
-									<a href="http://www.sunat.gob.pe/cl-ti-itmrconsruc/FrameCriterioBusquedaMovil.jsp" target="_blank"><img src="<%=request.getContextPath()%>/Efectivas/img/sunat.png" alt=""> </a>
+									<a href="http://coguada.com/cms/2017/11/08/test-snellen-evaluando-vista/" target="_blank"><img src="<%=request.getContextPath()%>/MenuAdministrador/img/ceguera.png" alt=""> </a>
 								</div>
 								</div>
 
@@ -174,7 +174,7 @@
 						</div>
 
 						<div class="form-group" style="text-align:center" >
-							<input style="margin-top:20px" type="submit" value="Registrar Practica" class="btn btn-primary">
+							<input style="margin-top:20px" type="submit" value="Registrar Alumno" class="btn btn-primary">
 						</div>
 						
 
