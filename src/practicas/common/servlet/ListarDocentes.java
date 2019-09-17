@@ -41,7 +41,7 @@ public class ListarDocentes extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 		
-		request.setAttribute("listaProfesores", listaDocentes);
+		request.setAttribute("listaDocentes", listaDocentes);
 		request.getRequestDispatcher("/MenuAdministrador/ListadoDocentes.jsp").forward(request, response);
 		
 		

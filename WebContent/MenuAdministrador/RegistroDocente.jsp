@@ -91,7 +91,7 @@ padding-bottom:20px;
 							
 
 								<div class="form-group">
-									<label for="escuela" class="col-sm-3 control-label">Especialidad:</label>
+									<label for="escuela" class="col-sm-3 control-label">Curso:</label>
 									<div class="col-sm-9">
 										<select size="1" class="form-control input-sm" id="Especialidad">
 											<option value="Matematicas">Matematicas</option>
@@ -100,9 +100,11 @@ padding-bottom:20px;
 											<option value="Aritmetica">Aritmetica</option>
 											<option value="geometria">Geometria</option>
 											<option value="razma">Razonamiento Matematico</option>
+											<option value="logica">Logica</option>
 										</select>
 									</div>
 								</div>
+								
 								
 								
 								</fieldset>

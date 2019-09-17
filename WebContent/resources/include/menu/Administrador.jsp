@@ -15,7 +15,7 @@
 		class="title">Menu Administrador</span></a>
 	<ul>
 	
-	<%if(rol.equalsIgnoreCase("ALUMNOS") || rol.equalsIgnoreCase("ADMINISTRADORES") || rol.equalsIgnoreCase("DESARROLLADORES")){
+	<%if(rol.equalsIgnoreCase("Administradores") || rol.equalsIgnoreCase("Profesores") ){
 %>
 
 			

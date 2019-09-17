@@ -15,4 +15,5 @@ public interface DAOProyecto {
 
 	public List<Persona> listadosalumnos() throws Exception;
 	public List<Persona> listadoProfesores() throws Exception;
+	List<Persona> listadosalumnos(String iddocente) throws Exception;
 }

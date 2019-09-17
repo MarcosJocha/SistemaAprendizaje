@@ -10,6 +10,28 @@ public class Persona implements Serializable {
 	//private int idPersona;
 	private String idPersona;
 	private String dni;
+	private String grado;
+	private String curso;
+	public String getCurso() {
+		return curso;
+	}
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+	public String getGrado() {
+		return grado;
+	}
+	public void setGrado(String grado) {
+		this.grado = grado;
+	}
+	public String getNivel() {
+		return nivel;
+	}
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
+
+	private String nivel;
 	public String getDni() {
 		return dni;
 	}
@@ -76,5 +98,6 @@ public class Persona implements Serializable {
 	public String toString() {
 		return "{id:\"" + this.idPersona + "\", nombre1:\"" + this.nombre + "\", apepat:\"" + this.apePaterno + "\", apemat:\"" + this.apeMaterno + "\"}";
 	}
+	
 	
 }

@@ -44,8 +44,7 @@
 			<!-- Contenido -->
 			<div>Alumnos</div>
 			<div>
-			<table data-search="true" id="table_telefono" data-height="600"
-						data-click-to-select="true">
+			<table class="table table-bordered">
 						<thead>
 							<tr>
 								
@@ -53,11 +52,11 @@
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
-								<th>Especialidad</th>
-								<th>Archivo</th>
+								<th>Grado</th>
+								<th>Nivel</th>
 							</tr>
 						</thead>
-						
+						<tbody>
 						<% for(int i=0; i<listaAlumnos.size(); i++){ %>
 							<tr>
 							
@@ -65,12 +64,14 @@
 								<td><%=listaAlumnos.get(i).getNombre() %></td>
 								<td><%=listaAlumnos.get(i).getApePaterno() %></td>
 								<td><%=listaAlumnos.get(i).getApeMaterno() %></td>
-								<td><%=listaAlumnos.get(i).getEspecialidad() %></td>
+								<td><%=listaAlumnos.get(i).getGrado() %></td>
+								<td><%=listaAlumnos.get(i).getNivel() %></td>
 								<td><a href="">
-								<i class="download-icons">Descargar</i>
+								<i class="download-icons">Ver Rendimiento</i>
 								</a></td>
 							</tr>
 						<% } %> 
+						</tbody>
 					</table>
 			</div>
 			

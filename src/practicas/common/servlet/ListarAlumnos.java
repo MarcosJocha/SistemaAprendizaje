@@ -43,7 +43,7 @@ public class ListarAlumnos extends HttpServlet {
 		}
 		
 		request.setAttribute("listaAlumnos", listaAlumnos);
-		request.getRequestDispatcher("/MenuDocente/ListadoAlumnos.jsp").forward(request, response);
+		request.getRequestDispatcher("/MenuAdministrador/ListadoAlumnos.jsp").forward(request, response);
 		
 		
 	}

@@ -16,18 +16,18 @@
 		class="title">Menu Alumno</span></a>
 	<ul>
 		
-			<%if(rol.equalsIgnoreCase("ALUMNOS") || rol.equalsIgnoreCase("ADMINISTRADORES") || rol.equalsIgnoreCase("DESARROLLADORES")){
+			<%if(rol.equalsIgnoreCase("Alumnos")){
 %>
 				
 				<li><a
-					href="<%=request.getContextPath()%>/MenuAlumno/Teoria.jsp"><span
-						class="title">Teoria</span></a></li>
+					href="<%=request.getContextPath()%>/MenuAlumno/Cursos.jsp"><span
+						class="title">Cursos</span></a></li>
 				<li><a
-					href="<%=request.getContextPath()%>/MenuAlumno/Ejercicios.jsp"><span
-						class="title">Ejercicios</span></a></li>
+					href="<%=request.getContextPath()%>/MenuAlumno/Calificaciones.jsp"><span
+						class="title">Calificaciones</span></a></li>
 				<li><a
-					href="<%=request.getContextPath()%>/MenuAlumno/Rendimiento.jsp"><span
-						class="title">Rendimiento</span></a></li>				
+					href="<%=request.getContextPath()%>/MenuAlumno/Avance.jsp"><span
+						class="title">Avance</span></a></li>				
 			
 	
 		

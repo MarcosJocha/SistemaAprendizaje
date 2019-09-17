@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<%@page import="java.util.Vector"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="practicas.common.action.SessionParameters"%>
 <%@page import="practicas.common.bean.Usuario"%>
 <%@page import="practicas.common.bean.Persona"%>
@@ -26,7 +27,7 @@
 </head>
 
 <%
-Vector<Profesor> listaDocentes=(Vector)request.getAttribute("listaProfesores");
+List<Persona> listaDocentes=(List<Persona>)request.getAttribute("listaDocentes");
 
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
@@ -42,8 +43,7 @@ Vector<Profesor> listaDocentes=(Vector)request.getAttribute("listaProfesores");
 			<!-- Contenido -->
 			<div>DOCENTES</div>
 			<div>
-			<table data-search="true" id="table_telefono" data-height="600"
-						data-click-to-select="true">
+			<table class="table table-bordered" >
 						<thead>
 							<tr>
 								
@@ -51,25 +51,25 @@ Vector<Profesor> listaDocentes=(Vector)request.getAttribute("listaProfesores");
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
-								<th>Disponibilidad</th>
-								<th>Asignar</th>
+								<th>Curso</th>
+								<th>Estado</th>
 							</tr>
 						</thead>
-						
+						<tbody>
 						<% for(int i=0; i<listaDocentes.size(); i++){ %>
 							<tr>
 							
 								<td><%=listaDocentes.get(i).getIdPersona() %></td>
-								<td><%=listaDocentes.get(i).getPersona().getNombre() %></td>
-								<td><%=listaDocentes.get(i).getPersona().getApePaterno() %></td>
-								<td><%=listaDocentes.get(i).getPersona().getApeMaterno() %></td>
-								<td><%=listaDocentes.get(i).getDisponibilidad() %></td>
-								<!--<td><a href="Gestionar_Docente?f=modificarDocente&dato=<%=listaDocentes.get(i).getIdProfesor() %>")>MODIFICAR</a></td>  -->
-								<td><a href="Gestionar_Docente?f=eliminarDocente&dato=<%=listaDocentes.get(i).getIdProfesor() %>")>
+								<td><%=listaDocentes.get(i).getNombre() %></td>
+								<td><%=listaDocentes.get(i).getApePaterno() %></td>
+								<td><%=listaDocentes.get(i).getApeMaterno() %></td>
+								<td><%=listaDocentes.get(i).getCurso() %></td>
+								<td><a href="Gestionar_Docente?f=modificarDocente&dato=<%=listaDocentes.get(i) %>")>Ver</a></td> 
 								<i class="material-icons">delete</i>
 								</a></td>
 							</tr>
 						<% } %> 
+						  </tbody>
 					</table>
 			</div>
 			

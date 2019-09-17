@@ -14,10 +14,10 @@
 
 	<li><a href="#"> <i class="entypo-folder"></i><span class="title">Menu Profesor</span></a>
 		<ul>
-			<%if(rol.equalsIgnoreCase("PROFESORES") || rol.equalsIgnoreCase("ADMINISTRADORES") || rol.equalsIgnoreCase("DESARROLLADORES")){
+			<%if(rol.equalsIgnoreCase("Profesores")){
 %>	
 		
-			<li><a href="<%=request.getContextPath()%>/listarAlumnos"><span class="title">Alumnos</span></a>
+			<li><a href="<%=request.getContextPath()%>/listarAlumnosProfesor"><span class="title">Alumnos</span></a>
 			<li><a href="<%=request.getContextPath()%>/MenuDocente/Cursos.jsp"><span class="title">Cursos</span></a>			
 			<li><a href="<%=request.getContextPath()%>/MenuDocente/Rendimiento.jsp"><span class="title">Rendimiento</span></a>			
 		
