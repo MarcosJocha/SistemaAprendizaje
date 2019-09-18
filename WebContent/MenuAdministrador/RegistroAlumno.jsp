@@ -45,13 +45,12 @@
 
 			
 			<div>
-				<form class="form-horizontal" data-toggle="validator" role="form" id="formDocente" name="formulario" enctype="multipart/form-data" method="post"
-				onsubmit = "return validarFormulario()"
-				>
+				<form class="form-horizontal" name="formulario"  method="post"
+				action = "<%=getServletContext().getContextPath() %>/RegistrarAlumno">
+				
 					<input type="hidden" value="insert" name="tipoRegistro" id="tipoRegistro">
 					<div class="row">
 						<div class="col-md-6">
-							<input type="hidden" name="f" value="guardarDocente" />
 
 
 
@@ -65,7 +64,7 @@
 									<label for="Nombres" class="col-sm-3 control-label">Nombres:
 									</label>
 									<div class="col-sm-9">
-										<input type="text" id="nombre" name="nombre"
+										<input type="text" name="nombre"
 											required class="form-control input-sm" />
 									</div>
 								</div>
@@ -74,7 +73,7 @@
 									<label for="apellido_paterno" class="col-sm-3 control-label">Apellido
 										Paterno:</label>
 									<div class="col-sm-9">
-										<input id="apematerno" type="text" name="apepaterno"
+										<input type="text" name="apepaterno"
 											required class="form-control input-sm" />
 									</div>
 								</div>
@@ -83,7 +82,7 @@
 									<label for="apellido_materno" class="col-sm-3 control-label">Apellido
 										Materno:</label>
 									<div class="col-sm-9">
-										<input id ="apematerno" type="text" name="apematerno"
+										<input  type="text" name="apematerno"
 											required class="form-control input-sm"/>
 									</div>
 								</div>
@@ -91,28 +90,34 @@
 								<div class="form-group">
 									<label for="apellido_materno" class="col-sm-3 control-label">DNI:</label>
 									<div class="col-sm-9">
-										<input id ="dni" type="text" name="dni"
+										<input type="text" name="dni"
 											class="form-control input-sm"/>
 									</div>
 								</div>
 
 
 								<div class="form-group">
-									<label class="col-sm-3 control-label">Direccion:</label>
+									<label class="col-sm-3 control-label">Celular Contacto:</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control input-sm"
-											required id="dirEmpresa" />
+											required name="celular" />
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="escuela" class="col-sm-3 control-label">Grado:</label>
 									<div class="col-sm-9">
-										<select size="1" class="form-control input-sm" id="especialidad">
-											<option value="1">1ro Secundaria</option>
-											<option value="2">2do Secundaria</option>
-											<option value="3">3ro Secundaria</option>
-											<option value="4">4to Secundaria</option>
-											<option value="5">5to Secundaria</option>
+										<select size="1" class="form-control input-sm" name="grado">
+											<option value="1">1ro Primaria</option>
+											<option value="2">2do Primaria</option>
+											<option value="3">3ro Primaria</option>
+											<option value="4">4to Primaria</option>
+											<option value="5">5to Primaria</option>
+											<option value="6">6to Primaria</option>
+											<option value="7">1ro Secundaria</option>
+											<option value="8">2do Secundaria</option>
+											<option value="9">3ro Secundaria</option>
+											<option value="10">4to Secundaria</option>
+											<option value="11">5to Secundaria</option>
 										</select>
 									</div>
 								</div>
@@ -135,24 +140,14 @@
 								</div>
 								</div>
 
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Nivel Ceguera</label>
-									<div class="col-sm-9">
-										<input type="text" class="form-control input-sm"
-											required id="ruc" />
-									</div>
-								</div>
 								
 								<div class="form-group">
-									<label for="escuela" class="col-sm-3 control-label">Puntaje Test:</label>
+									<label for="escuela" class="col-sm-3 control-label">Puntaje Test Ceguera:</label>
 									<div class="col-sm-9">
-										<select size="1" class="form-control input-sm" id="especialidad">
-											<option value="20">20</option>
-											<option value="30">30</option>
-											<option value="50">50</option>
-											<option value="100">100</option>
-											<option value="150">150</option>
-											<option value="200">200</option>
+										<select size="1" class="form-control input-sm" name="nivelceguera">
+											<option value="1">20</option>
+											<option value="2">100</option>
+											<option value="3">150</option>
 										</select>
 									</div>
 								</div>
@@ -161,7 +156,7 @@
 									<label class="col-sm-3 control-label">Comentario</label>
 									<div class="col-sm-9">
 										<input type="text" class="form-control input-sm"
-											required id="razon" />
+											required name="comentario" />
 									</div>
 								</div>
 								

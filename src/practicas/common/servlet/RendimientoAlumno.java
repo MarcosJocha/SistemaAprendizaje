@@ -17,14 +17,15 @@ import practicas.common.action.SessionParameters;
 import practicas.common.bean.Persona;
 import practicas.common.bean.Usuario;
 import practicas.common.bean.Alumno;
+import practicas.common.bean.Evaluacion;
 import practicas.common.bean.Profesor;
 import practicas.common.dao.DAOFactory;
 
 
-@WebServlet("/ListarAlumnosProfesor")
-public class ListarAlumnosProfesor extends HttpServlet {
+@WebServlet("/RendimientoAlumno")
+public class RendimientoAlumno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public ListarAlumnosProfesor() {
+    public RendimientoAlumno() {
         super();
     }
 	/**
@@ -32,24 +33,21 @@ public class ListarAlumnosProfesor extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub	
-		
-		if(request.getAttribute("mensaje")!=null) {
-			request.setAttribute("mensaje", "Registro de Alumno Correcto");
-		}
+		String idAlumno = request.getParameter("id");
 		
 		
-		String iddocente = request.getParameter("iddocente");		
-		List<Persona> listaAlumnos = null;
+		List<Evaluacion> listaEvaluaciones = null;
+		
 		try {
 			DAOFactory oDAOFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);
-			listaAlumnos = oDAOFactory.getFunctions().getPracticas().listadosalumnos(iddocente);
+			listaEvaluaciones = oDAOFactory.getFunctions().getPracticas().listadoEvaluaciones(idAlumno);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		
-		request.setAttribute("listaAlumnos", listaAlumnos);
-		request.getRequestDispatcher("/MenuDocente/ListadoAlumnos.jsp").forward(request, response);
+		request.setAttribute("listaEvaluaciones", listaEvaluaciones);
+		request.getRequestDispatcher("/MenuAdministrador/ListadoEvaluacionesAlumno.jsp").forward(request, response);
 		
 		
 	}

@@ -31,6 +31,18 @@ List<Persona> listaDocentes=(List<Persona>)request.getAttribute("listaDocentes")
 
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
+	String mensaje="";
+	String text="",display="";
+	if(request.getAttribute("mensaje")!=null){
+		 mensaje= request.getAttribute("mensaje").toString();
+		 text="alert-success";
+		 display="";
+		 
+		 }else{
+		 mensaje="";
+		 text="";
+		 display="hidden";
+	}
 %>
 
 
@@ -39,6 +51,7 @@ List<Persona> listaDocentes=(List<Persona>)request.getAttribute("listaDocentes")
 		<jsp:include page="/resources/include/sidebar-menu.jsp"></jsp:include>
 		<div class="main-content">
 			<jsp:include page="/resources/include/profile-bar.jsp"></jsp:include>
+			<div class="alert <%=text%> <%=display%>" role="alert"><%=mensaje%></div>
 
 			<!-- Contenido -->
 			<div>DOCENTES</div>
@@ -64,9 +77,8 @@ List<Persona> listaDocentes=(List<Persona>)request.getAttribute("listaDocentes")
 								<td><%=listaDocentes.get(i).getApePaterno() %></td>
 								<td><%=listaDocentes.get(i).getApeMaterno() %></td>
 								<td><%=listaDocentes.get(i).getCurso() %></td>
-								<td><a href="Gestionar_Docente?f=modificarDocente&dato=<%=listaDocentes.get(i) %>")>Ver</a></td> 
-								<i class="material-icons">delete</i>
-								</a></td>
+								<td><a href="Verdocente?id=<%=listaDocentes.get(i).getIdPersona() %>")>Ver</a></td> 
+
 							</tr>
 						<% } %> 
 						  </tbody>

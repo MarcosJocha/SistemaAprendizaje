@@ -32,17 +32,13 @@
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
 	String mensaje="";
-	String text="",display="";
+	String text="";
 	if(request.getAttribute("mensaje")!=null){
-		
 		 mensaje= request.getAttribute("mensaje").toString();
 		 text="alert-success";
-		 display="";
-		 
 		 }else{
 		 mensaje="";
-		 text="";
-		 display="hidden";
+		 text="alert-danger";
 	}
 	
 %>
@@ -53,7 +49,7 @@
 		<jsp:include page="/resources/include/sidebar-menu.jsp"></jsp:include>
 		<div class="main-content">
 			<jsp:include page="/resources/include/profile-bar.jsp"></jsp:include>
-			<div class="alert <%=text%> " role="alert"><%=mensaje%></div>
+			<div class="alert <%=text%>" role="alert"><%=mensaje%></div>
 			<!-- Contenido -->
 			<div>Alumnos General</div>
 			<div>
@@ -66,7 +62,7 @@
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
 								<th>Grado</th>
-								<th>Nivel Ceguera</th>
+								<th>Nivel</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -78,7 +74,7 @@
 								<td><%=listaAlumnos.get(i).getApePaterno() %></td>
 								<td><%=listaAlumnos.get(i).getApeMaterno() %></td>
 								<td><%=listaAlumnos.get(i).getGrado() %></td>
-								<td><%=listaAlumnos.get(i).getNivelceguera() %></td>
+								<td><%=listaAlumnos.get(i).getNivel() %></td>
 								<td><a href="RendimientoAlumno?id=<%=listaAlumnos.get(i).getIdPersona()%>">
 								<i class="download-icons">Ver Rendimiento</i>
 								</a></td>

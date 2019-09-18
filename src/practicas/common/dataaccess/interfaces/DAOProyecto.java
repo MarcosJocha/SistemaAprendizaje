@@ -2,6 +2,7 @@ package practicas.common.dataaccess.interfaces;
 
 import practicas.common.bean.Persona;
 import practicas.common.bean.Usuario;
+import practicas.common.bean.Evaluacion;
 import practicas.common.bean.Profesor;
 import practicas.common.bean.Alumno;
 import practicas.common.bean.Documento;
@@ -15,5 +16,8 @@ public interface DAOProyecto {
 
 	public List<Persona> listadosalumnos() throws Exception;
 	public List<Persona> listadoProfesores() throws Exception;
-	List<Persona> listadosalumnos(String iddocente) throws Exception;
+	public List<Persona> listadosalumnos(String iddocente) throws Exception;
+	public Persona RegistroAlumno(Persona persona) throws Exception;
+	public Persona RegistroDocente(Persona persona) throws Exception;
+	public List<Evaluacion> listadoEvaluaciones(String idalumno) throws Exception;
 }

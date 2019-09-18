@@ -32,7 +32,10 @@ public class ListarAlumnos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub	
-		String idAlumno = request.getParameter("idAlumno");		
+		if(request.getAttribute("mensaje")!=null) {
+			request.setAttribute("mensaje", "Registro de Alumno Correcto");
+		}
+		
 		List<Persona> listaAlumnos = null;
 		try {
 			DAOFactory oDAOFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);

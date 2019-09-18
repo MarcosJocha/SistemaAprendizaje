@@ -12,6 +12,59 @@ public class Persona implements Serializable {
 	private String dni;
 	private String grado;
 	private String curso;
+	public String getNivelceguera() {
+		return nivelceguera;
+	}
+	public void setNivelceguera(String nivelceguera) {
+		this.nivelceguera = nivelceguera;
+	}
+
+	public String nivelceguera;
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	private String direccion;
+	private String usuario;
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	public String getClave() {
+		return clave;
+	}
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
+	private String clave;
+	private int ExitoInsert;
+	public int getExitoInsert() {
+		return ExitoInsert;
+	}
+	public void setExitoInsert(int exitoInsert) {
+		ExitoInsert = exitoInsert;
+	}
+	public int getExitoDelete() {
+		return ExitoDelete;
+	}
+	public void setExitoDelete(int exitoDelete) {
+		ExitoDelete = exitoDelete;
+	}
+	public int getExitoUpdate() {
+		return ExitoUpdate;
+	}
+	public void setExitoUpdate(int exitoUpdate) {
+		ExitoUpdate = exitoUpdate;
+	}
+
+	private int ExitoDelete;
+	private int ExitoUpdate;
 	public String getCurso() {
 		return curso;
 	}
@@ -98,6 +151,7 @@ public class Persona implements Serializable {
 	public String toString() {
 		return "{id:\"" + this.idPersona + "\", nombre1:\"" + this.nombre + "\", apepat:\"" + this.apePaterno + "\", apemat:\"" + this.apeMaterno + "\"}";
 	}
+	
 	
 	
 }

@@ -49,7 +49,7 @@ padding-bottom:20px;
 		
 
 			<div>
-				<form class="form-horizontal" data-toggle="validator" role="form" id="formDocente" name="formulario" enctype="multipart/form-data" method="post" onsubmit = "return validarFormulario()">
+				<form class="form-horizontal" name = "formulario" method="post" action = "<%=getServletContext().getContextPath() %>/RegistrarDocente">
 						<div class="row">
 						
 						
@@ -61,11 +61,20 @@ padding-bottom:20px;
 								
 								
 									<div class="form-group">
+									<label for="Nombres" class="col-sm-3 control-label">Nombres:
+									</label>
+									<div class="col-sm-9">
+										<input type="text" name="nombre"
+											required class="form-control input-sm" />
+									</div>
+								</div>
+
+								<div class="form-group">
 									<label for="apellido_paterno" class="col-sm-3 control-label">Apellido
 										Paterno:</label>
 									<div class="col-sm-9">
-										<input id="apeP" type="text" name="apellidopaterno"
-											class="form-control input-sm" />
+										<input type="text" name="apepaterno"
+											required class="form-control input-sm" />
 									</div>
 								</div>
 
@@ -73,18 +82,16 @@ padding-bottom:20px;
 									<label for="apellido_materno" class="col-sm-3 control-label">Apellido
 										Materno:</label>
 									<div class="col-sm-9">
-										<input id ="apeM" type="text" name="apellidomaterno"
-											class="form-control input-sm"/>
+										<input  type="text" name="apematerno"
+											required class="form-control input-sm"/>
 									</div>
 								</div>
 								
-
 								<div class="form-group">
-									<label for="Nombres" class="col-sm-3 control-label">Nombres:
-									</label>
+									<label for="apellido_materno" class="col-sm-3 control-label">DNI:</label>
 									<div class="col-sm-9">
-										<input type="text" id="nombres" name="nombres"
-											class="form-control input-sm" />
+										<input type="text" name="dni"
+											class="form-control input-sm"/>
 									</div>
 								</div>
 
@@ -93,14 +100,34 @@ padding-bottom:20px;
 								<div class="form-group">
 									<label for="escuela" class="col-sm-3 control-label">Curso:</label>
 									<div class="col-sm-9">
-										<select size="1" class="form-control input-sm" id="Especialidad">
-											<option value="Matematicas">Matematicas</option>
-											<option value="Algebra">Trigonometria</option>
-											<option value="Algebra">Algebra</option>
-											<option value="Aritmetica">Aritmetica</option>
-											<option value="geometria">Geometria</option>
-											<option value="razma">Razonamiento Matematico</option>
-											<option value="logica">Logica</option>
+										<select size="1" class="form-control input-sm" name="curso">
+											<option value="1">Matematicas</option>
+											<option value="2">Trigonometria</option>
+											<option value="3">Algebra</option>
+											<option value="4">Aritmetica</option>
+											<option value="5">Geometria</option>
+											<option value="6">Razonamiento Matematico</option>
+											<option value="7">Logica</option>
+										</select>
+									</div>
+								</div>
+								
+								
+								<div class="form-group">
+									<label for="escuela" class="col-sm-3 control-label">Grado:</label>
+									<div class="col-sm-9">
+										<select size="1" class="form-control input-sm" name="grado">
+											<option value="1">1ro Primaria</option>
+											<option value="2">2do Primaria</option>
+											<option value="3">3ro Primaria</option>
+											<option value="4">4to Primaria</option>
+											<option value="5">5to Primaria</option>
+											<option value="6">6to Primaria</option>
+											<option value="7">1ro Secundaria</option>
+											<option value="8">2do Secundaria</option>
+											<option value="9">3ro Secundaria</option>
+											<option value="10">4to Secundaria</option>
+											<option value="11">5to Secundaria</option>
 										</select>
 									</div>
 								</div>
@@ -118,27 +145,13 @@ padding-bottom:20px;
 							
 						
 								
-								<div class="form-group">
 									<label for="txt_celular" class="col-sm-3 control-label">Celular:</label>
 									<div class="col-sm-9">
-										<input id="txt_celular" type="text" name="txt_celular"
+										<input  type="text" name="celular"
 											class="form-control input-sm" />
 									</div>
-									</div>
-									<div class="form-group">
-									<label for="txt_telefono" class="col-sm-3 control-label">Teléfono:</label>
-									<div class="col-sm-9">
-										<input id="txt_telefono" type="text" name="txt_telefono"
-											class="form-control input-sm" />
-									</div>
-									</div>
-									<div class="form-group">
-									<label for="txt_email" class="col-sm-3 control-label">E-mail:</label>
-									<div class="col-sm-9">
-										<input id="txt_email" type="text" name="txt_email"
-											class="form-control input-sm" />
-									</div>
-									</div>
+									
+								
 									
 									</fieldset>
 							</div>
@@ -147,12 +160,12 @@ padding-bottom:20px;
 						
 
 
-						<div class="form-group" style="text-align:center" >
-							<input style="margin-top:20px" type="submit" value="Registrar" class="btn btn-primary">
-						</div>
+						
 						
 					</div>
-					
+					<div class="form-group" style="text-align:center" >
+							<input style="margin-top:20px" type="submit" value="Registrar" class="btn btn-primary">
+						</div>
 					</form>
 					
 				</div>
