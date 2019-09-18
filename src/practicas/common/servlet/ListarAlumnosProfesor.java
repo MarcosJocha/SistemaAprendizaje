@@ -34,9 +34,9 @@ public class ListarAlumnosProfesor extends HttpServlet {
 		// TODO Auto-generated method stub	
 		
 	
+		String iddocente = request.getParameter("id");		
 		
 		
-		String iddocente = request.getParameter("iddocente");		
 		List<Persona> listaAlumnos = null;
 		try {
 			DAOFactory oDAOFactory = DAOFactory.getDAOFactory(DAOFactory.MYSQL);

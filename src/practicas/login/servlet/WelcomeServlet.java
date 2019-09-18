@@ -31,7 +31,7 @@ public class WelcomeServlet extends ActionServlet {
 	public void modules() throws Exception {
 		log.info("welcome");
 		Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
-		log.info("USUARIO"+oUsuario.getPersona().getIdPersona().toString());
+		log.info("USUARIO "+oUsuario.getPersona().getIdPersona().toString());
 		
 		request.getServletContext().getRequestDispatcher("/welcome.jsp").forward(request, response);
 	} 

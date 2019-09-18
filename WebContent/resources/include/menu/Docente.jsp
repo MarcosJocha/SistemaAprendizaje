@@ -5,6 +5,8 @@
 
 <%
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
+
+	String idprofesor=oUsuario.getPersona().getIdPersona().toString();
 	Persona oProfesor = oUsuario.getPersona();
 	String rol = oUsuario.getRol().toString();
 	
@@ -16,8 +18,7 @@
 		<ul>
 			<%if(rol.equalsIgnoreCase("Profesores")){
 %>	
-		
-			<li><a href="<%=request.getContextPath()%>/listarAlumnosProfesor"><span class="title">Alumnos</span></a>
+			<li><a href="<%=request.getContextPath()%>/listarAlumnosProfesor?id=<%=idprofesor%>"><span class="title">Alumnos</span></a>
 			<li><a href="<%=request.getContextPath()%>/MenuDocente/Cursos.jsp"><span class="title">Cursos</span></a>			
 			<li><a href="<%=request.getContextPath()%>/RendimientoAlumnoDocente"><span class="title">Rendimiento</span></a>			
 		

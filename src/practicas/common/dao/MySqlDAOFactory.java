@@ -62,7 +62,7 @@ public class MySqlDAOFactory extends DAOFactory {
 		
 		if (oStrDatabaseEnv.equalsIgnoreCase("open")) {
 			log.info("connection is Open");
-			oParameters.put("jdbc:url", "jdbc:mysql://207.244.103.83:3306/bd_sistemaaprendizaje");
+			oParameters.put("jdbc:url", "jdbc:mysql://207.244.103.83:3306/c0bd_sistemaAprendizaje");
 			oParameters.put("usuario", "c0sistemas");
 			oParameters.put("clave", "hpvsAVTv!T7");		
 		} else { 

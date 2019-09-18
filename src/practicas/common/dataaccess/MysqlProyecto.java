@@ -144,6 +144,7 @@ public class MysqlProyecto implements DAOProyecto {
 				persona.setNivelceguera((rs.getString("nivelceguera")));
 				listpersona.add(persona);
 			}
+			System.out.print("ListaProfeAlumnos"+listpersona.size());
 			MySqlDAOFactory.close(con);
 		} catch (Exception e) {
 			System.out.print(e.getMessage());
