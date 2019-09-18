@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<%@page import="java.util.Vector"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="practicas.common.action.SessionParameters"%>
 <%@page import="practicas.common.bean.Usuario"%>
 <%@page import="practicas.common.bean.Persona"%>
 <%@page import="practicas.common.bean.Alumno"%>
-<%@page import="practicas.common.bean.Profesor"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -27,13 +27,11 @@
 
 </head>
 
-				<h1 align="center">Supervision</h1>
 				
 <%
-Vector<Alumno> listaAlumnos=(Vector)request.getAttribute("listaAlumnos");
-
-	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
-	Persona oPersona = oUsuario.getPersona();
+List<Persona> listaAlumnos=(List<Persona>)request.getAttribute("listaAlumnos");
+Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
+Persona oPersona = oUsuario.getPersona();
 %>
 
 
@@ -46,8 +44,7 @@ Vector<Alumno> listaAlumnos=(Vector)request.getAttribute("listaAlumnos");
 			<!-- Contenido -->
 			<div>Alumnos</div>
 			<div>
-			<table data-search="true" id="table_telefono" data-height="600"
-						data-click-to-select="true">
+			<table class="table table-bordered">
 						<thead>
 							<tr>
 								
@@ -55,32 +52,29 @@ Vector<Alumno> listaAlumnos=(Vector)request.getAttribute("listaAlumnos");
 								<th>Nombre</th>
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
-								<th>Estado</th>
-								<th>Archivo</th>
+								<th>Grado</th>
+								<th>Nivel Ceguera</th>
+								<th>Rendimiento</th>
 							</tr>
 						</thead>
-						
+						<tbody>
 						<% for(int i=0; i<listaAlumnos.size(); i++){ %>
 							<tr>
 							
-								<td><%=listaAlumnos.get(i).getIdAlumno() %></td>
-								<td><%=listaAlumnos.get(i).getPersona().getNombre() %></td>
-								<td><%=listaAlumnos.get(i).getPersona().getApePaterno() %></td>
-								<td><%=listaAlumnos.get(i).getPersona().getApeMaterno() %></td>
-								<%if(listaAlumnos.get(i).getPersona().equals("REVISADO")){ %>
-								<td>Por Revisar</td>
-								<%}else{ %>
-								<td>Revisado</td>
-								<%} %>
-								<td><a href="Gestionar_Docente?f=eliminarDocente&dato=<%=listaAlumnos.get(i).getIdAlumno()%>")>
-								<i class="material-icons"></i>
-								</a>Ver</td>
+								<td><%=listaAlumnos.get(i).getIdPersona() %></td>
+								<td><%=listaAlumnos.get(i).getNombre() %></td>
+								<td><%=listaAlumnos.get(i).getApePaterno() %></td>
+								<td><%=listaAlumnos.get(i).getApeMaterno() %></td>
+								<td><%=listaAlumnos.get(i).getGrado() %></td>
+								<td><%=listaAlumnos.get(i).getNivelceguera() %></td>
+								<td><a href="RendimientoAlumno?id=<%=listaAlumnos.get(i).getIdPersona()%>">
+								<i class="download-icons">Ver Rendimiento</i>
+								</a></td>
 							</tr>
 						<% } %> 
+						</tbody>
 					</table>
 			</div>
-
-
 			
 					<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 		</div>
@@ -89,6 +83,7 @@ Vector<Alumno> listaAlumnos=(Vector)request.getAttribute("listaAlumnos");
 
 		<!-- Fin contenido -->
 	<jsp:include page="/resources/include/chat.jsp"></jsp:include>
+	</div>
 	</div>
 
 	<jsp:include page="/resources/include/footer-resources.jsp"></jsp:include>

@@ -19,7 +19,7 @@
 		
 			<li><a href="<%=request.getContextPath()%>/listarAlumnosProfesor"><span class="title">Alumnos</span></a>
 			<li><a href="<%=request.getContextPath()%>/MenuDocente/Cursos.jsp"><span class="title">Cursos</span></a>			
-			<li><a href="<%=request.getContextPath()%>/MenuDocente/Rendimiento.jsp"><span class="title">Rendimiento</span></a>			
+			<li><a href="<%=request.getContextPath()%>/RendimientoAlumnoDocente"><span class="title">Rendimiento</span></a>			
 		
 			<%} %>
 				

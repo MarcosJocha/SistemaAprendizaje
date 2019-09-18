@@ -128,7 +128,7 @@ public class MysqlProyecto implements DAOProyecto {
 		Connection con = MySqlDAOFactory.obtenerConexion();
 		try {
 			StringBuffer sentencia=new StringBuffer();
-			sentencia.append("select p.id, p.apellido_paterno ,p.apellido_materno,p.nombre,g.descripcion,g.nivel from persona p, alumno a,grado g, profesor pf where pf.idgrado=a.idgrado and pf.id="+iddocente+ " and p.id=a.id  and g.idgrado = a.idgrado order by p.apellido_paterno desc"); 
+			sentencia.append("select p.id, p.apellido_paterno ,p.apellido_materno,p.nombre,g.descripcion,n.nombre as nivelceguera from persona p, alumno a,nivelceguera n,grado g, profesor pf where pf.idgrado=a.idgrado and pf.id="+iddocente+ " and p.id=a.id and n.idnivelceguera=a.idnivelceguera and g.idgrado = a.idgrado order by p.apellido_paterno desc"); 
 			
 			
 			PreparedStatement ps =  con.prepareStatement(sentencia.toString());
@@ -141,7 +141,7 @@ public class MysqlProyecto implements DAOProyecto {
 				persona.setApePaterno((rs.getString("apellido_paterno")));							
 				persona.setApeMaterno((rs.getString("apellido_materno")));
 				persona.setGrado((rs.getString("descripcion")));
-				persona.setNivel((rs.getString("nivel")));
+				persona.setNivelceguera((rs.getString("nivelceguera")));
 				listpersona.add(persona);
 			}
 			MySqlDAOFactory.close(con);
@@ -158,14 +158,22 @@ public class MysqlProyecto implements DAOProyecto {
 		Connection con = MySqlDAOFactory.obtenerConexion();
 		try {
 			StringBuffer sentencia=new StringBuffer();
-			sentencia.append("select p.id, p.apellido_paterno ,p.apellido_materno,p.nombre,g.descripcion,g.nivel from persona p, alumno a,grado g where p.id=a.id  and g.idgrado = a.idgrado order by p.apellido_paterno desc"); 
+			sentencia.append("  select p.id as codigo,CONCAT(p.nombre,' ', p.apellido_paterno,' ', p.apellido_materno) AS nombrecompleto,c.descripcion as curso,t.descripcion as tema,ej.descripcion as ejercicio,ev.fecha_evaluacion,ev.nrointentos,ev.nota  from evaluacion ev, ejercicio ej, persona p, alumno a, curso c,tema t where ev.idejercicio=ej.idejercicio  and p.id=a.id and c.idcurso=ej.idcurso and ej.idtema=t.idtema and p.id="+ idalumno+ 
+					""); 
 
 			PreparedStatement ps =  con.prepareStatement(sentencia.toString());
 			ResultSet rs = ps.executeQuery();
 			Evaluacion evaluacion;
 			while (rs.next()) {
 				evaluacion = new Evaluacion();
-				evaluacion.setIdalumno(Integer.parseInt(rs.getString("id")));
+				evaluacion.setNombrecompleto(rs.getString("nombrecompleto"));
+				evaluacion.setIdpersona(rs.getString("codigo"));	
+				evaluacion.setCurso(rs.getString("curso"));
+				evaluacion.setTema(rs.getString("tema"));
+				evaluacion.setEjercicio(rs.getString("ejercicio"));
+				evaluacion.setFecha_evaluacion(rs.getString("fecha_evaluacion"));
+				evaluacion.setNrointentos(rs.getInt("nrointentos"));
+				evaluacion.setNota(rs.getInt("nota"));
 				listEvaluaciones.add(evaluacion);
 			}
 			MySqlDAOFactory.close(con);

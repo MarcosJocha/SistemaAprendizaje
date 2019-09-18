@@ -6,6 +6,7 @@
 <%@page import="practicas.common.bean.Usuario"%>
 <%@page import="practicas.common.bean.Persona"%>
 <%@page import="practicas.common.bean.Alumno"%>
+<%@page import="practicas.common.bean.Evaluacion"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -28,18 +29,12 @@
 </head>
 
 <%
-	List<Persona> listaAlumnos=(List<Persona>)request.getAttribute("listaAlumnos");
+	List<Evaluacion> listaEvaluaciones=(List<Evaluacion>)request.getAttribute("listaEvaluaciones");
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
-	String mensaje="";
-	String text="";
-	if(request.getAttribute("mensaje")!=null){
-		 mensaje= request.getAttribute("mensaje").toString();
-		 text="alert-success";
-		 }else{
-		 mensaje="";
-		 text="alert-danger";
-	}
+	
+	String alumno=listaEvaluaciones.get(0).getNombrecompleto();
+	
 	
 %>
 
@@ -49,35 +44,35 @@
 		<jsp:include page="/resources/include/sidebar-menu.jsp"></jsp:include>
 		<div class="main-content">
 			<jsp:include page="/resources/include/profile-bar.jsp"></jsp:include>
-			<div class="alert <%=text%>" role="alert"><%=mensaje%></div>
 			<!-- Contenido -->
-			<div>Alumnos General</div>
+			<div>Rendimiento:</div>
+			<br/>
+			<div class="lead alert-info"><%=alumno %></div>
 			<div>
 			<table class="table table-bordered">
 						<thead>
 							<tr>
 								
-								<th>Codigo</th>
-								<th>Nombre</th>
-								<th>Apellido Paterno</th>
-								<th>Apellido Materno</th>
-								<th>Grado</th>
-								<th>Nivel</th>
+								<th>Curso</th>
+								<th>Tema</th>
+								<th>Ejercicio</th>
+								<th>nrointentos</th>
+								<th>nota</th>
+								<th>Fecha</th>
+								<th>Detalle</th>
 							</tr>
 						</thead>
 						<tbody>
-						<% for(int i=0; i<listaAlumnos.size(); i++){ %>
+						<% for(int i=0; i<listaEvaluaciones.size(); i++){ %>
 							<tr>
 							
-								<td><%=listaAlumnos.get(i).getIdPersona() %></td>
-								<td><%=listaAlumnos.get(i).getNombre() %></td>
-								<td><%=listaAlumnos.get(i).getApePaterno() %></td>
-								<td><%=listaAlumnos.get(i).getApeMaterno() %></td>
-								<td><%=listaAlumnos.get(i).getGrado() %></td>
-								<td><%=listaAlumnos.get(i).getNivel() %></td>
-								<td><a href="RendimientoAlumno?id=<%=listaAlumnos.get(i).getIdPersona()%>">
-								<i class="download-icons">Ver Rendimiento</i>
-								</a></td>
+								<td><%=listaEvaluaciones.get(i).getCurso() %></td>
+								<td><%=listaEvaluaciones.get(i).getTema() %></td>
+								<td><%=listaEvaluaciones.get(i).getEjercicio() %></td>
+								<td><%=listaEvaluaciones.get(i).getNrointentos() %></td>
+								<td><%=listaEvaluaciones.get(i).getNota() %></td>
+								<td><%=listaEvaluaciones.get(i).getFecha_evaluacion() %></td>
+								<td><a href=""><i class="download-icons">Ver Detalle</i></a></td>
 							</tr>
 						<% } %> 
 						</tbody>

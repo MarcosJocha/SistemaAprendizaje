@@ -67,6 +67,7 @@
 								<th>Apellido Materno</th>
 								<th>Grado</th>
 								<th>Nivel Ceguera</th>
+								<th>Rendimiento</th>
 							</tr>
 						</thead>
 						<tbody>

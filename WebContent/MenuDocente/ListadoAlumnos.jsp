@@ -29,9 +29,10 @@
 
 <%
 	List<Persona> listaAlumnos=(List<Persona>)request.getAttribute("listaAlumnos");
-
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
+	
+	
 %>
 
 
@@ -53,7 +54,8 @@
 								<th>Apellido Paterno</th>
 								<th>Apellido Materno</th>
 								<th>Grado</th>
-								<th>Nivel</th>
+								<th>Nivel Ceguera</th>
+								<th>Rendimiento</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,8 +67,8 @@
 								<td><%=listaAlumnos.get(i).getApePaterno() %></td>
 								<td><%=listaAlumnos.get(i).getApeMaterno() %></td>
 								<td><%=listaAlumnos.get(i).getGrado() %></td>
-								<td><%=listaAlumnos.get(i).getNivel() %></td>
-								<td><a href="">
+								<td><%=listaAlumnos.get(i).getNivelceguera() %></td>
+								<td><a href="RendimientoAlumno?id=<%=listaAlumnos.get(i).getIdPersona()%>">
 								<i class="download-icons">Ver Rendimiento</i>
 								</a></td>
 							</tr>
