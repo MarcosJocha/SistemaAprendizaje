@@ -1,17 +1,15 @@
 CREATE SCHEMA IF NOT EXISTS `bd_sistemaaprendizaje` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `bd_sistemaaprendizaje`;
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 18, 2019 at 11:33 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Servidor: localhost
+-- Tiempo de generación: 19-09-2019 a las 05:12:23
+-- Versión del servidor: 5.7.23-0ubuntu0.16.04.1
+-- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -21,12 +19,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bd_sistemaaprendizaje`
+-- Base de datos: `c0bd_sistemaAprendizaje`
 --
 
 DELIMITER $$
 --
--- Procedures
+-- Procedimientos
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_USUARIO` (IN `par_user` VARCHAR(45), IN `par_password` VARCHAR(150))  BEGIN
 
@@ -86,7 +84,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `alumno`
+-- Estructura de tabla para la tabla `alumno`
 --
 
 CREATE TABLE `alumno` (
@@ -98,7 +96,7 @@ CREATE TABLE `alumno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `alumno`
+-- Volcado de datos para la tabla `alumno`
 --
 
 INSERT INTO `alumno` (`id`, `estado`, `idnivelceguera`, `idgrado`, `fecha_registro`) VALUES
@@ -111,18 +109,19 @@ INSERT INTO `alumno` (`id`, `estado`, `idnivelceguera`, `idgrado`, `fecha_regist
 (10101022, 1, 3, 5, '2019-09-17 00:00:00'),
 (10101023, 1, 3, 5, '2019-09-17 00:00:00'),
 (10101055, 1, 2, 5, '2019-09-17 00:00:00'),
-(10221015, 1, 3, 3, '2019-09-17 00:00:00'),
+(10221015, 1, 3, 5, '2019-09-17 00:00:00'),
 (10252525, 1, 1, 5, '2019-09-17 00:00:00'),
 (10263720, 1, 1, 5, '2019-06-10 00:00:00'),
 (11155811, 1, 2, 4, '2019-09-18 00:00:00'),
 (11155889, 1, 2, 4, '2019-09-18 00:00:00'),
 (20101012, 1, 1, 3, '2019-09-17 00:00:00'),
 (20101055, 1, 2, 3, '2019-09-17 00:00:00'),
-(20202088, 1, 1, 1, '2019-09-18 00:00:00'),
+(20202088, 1, 1, 5, '2019-09-18 00:00:00'),
 (20585858, 1, 3, 4, '2019-09-18 00:00:00'),
-(22101013, 1, 1, 3, '2019-09-17 00:00:00'),
-(22101014, 1, 3, 3, '2019-09-17 00:00:00'),
+(22101013, 1, 1, 5, '2019-09-17 00:00:00'),
+(22101014, 1, 3, 5, '2019-09-17 00:00:00'),
 (25659844, 1, 2, 4, '2019-09-18 00:00:00'),
+(70533423, 1, 1, 5, '2019-09-19 00:05:46'),
 (70558866, 1, 10, 5, '2019-06-10 00:00:00'),
 (70656960, 1, 2, 5, '2019-06-10 00:00:00'),
 (70656961, 1, 14, 5, '2019-06-10 00:00:00'),
@@ -132,7 +131,7 @@ INSERT INTO `alumno` (`id`, `estado`, `idnivelceguera`, `idgrado`, `fecha_regist
 -- --------------------------------------------------------
 
 --
--- Table structure for table `curso`
+-- Estructura de tabla para la tabla `curso`
 --
 
 CREATE TABLE `curso` (
@@ -141,7 +140,7 @@ CREATE TABLE `curso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `curso`
+-- Volcado de datos para la tabla `curso`
 --
 
 INSERT INTO `curso` (`idcurso`, `descripcion`) VALUES
@@ -155,7 +154,7 @@ INSERT INTO `curso` (`idcurso`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ejercicio`
+-- Estructura de tabla para la tabla `ejercicio`
 --
 
 CREATE TABLE `ejercicio` (
@@ -165,30 +164,32 @@ CREATE TABLE `ejercicio` (
   `idtema` int(11) NOT NULL,
   `PuntajeTotal` int(11) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `namejsp` varchar(100) DEFAULT NULL
+  `namejsp` varchar(100) DEFAULT NULL,
+  `comentario` varchar(250) NOT NULL DEFAULT '',
+  `Dificultad` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ejercicio`
+-- Volcado de datos para la tabla `ejercicio`
 --
 
-INSERT INTO `ejercicio` (`idejercicio`, `idcurso`, `idgrado`, `idtema`, `PuntajeTotal`, `descripcion`, `namejsp`) VALUES
-(1, 4, 5, 3, 20, 'Ejercicios de angulos', 'ejercicio1_4_5_3'),
-(2, 4, 5, 3, 20, 'Ejercicio de Pitagoras', 'ejercicio2_4_5_3'),
-(3, 4, 5, 3, 20, 'Ejercicio Triangulo Rectangulo', 'ejercicio3_4_5_3'),
-(4, 4, 5, 3, 20, 'Ejercicio Angulos agudos', 'ejercicio4_4_5_3'),
-(5, 4, 5, 3, 20, 'Ejercicio Angulos Obtusos', 'ejercicio5_4_5_3'),
-(6, 4, 5, 3, 20, 'Ejercicio Complementos', 'ejercicio6_4_5_3'),
-(7, 4, 5, 2, 20, 'Ejercicio Sucesiones de Figuras', 'ejercicio7_4_5_3'),
-(8, 4, 5, 2, 20, 'Ejercicio Sumatorias', 'ejercicio8_4_5_3'),
-(9, 4, 5, 2, 20, 'Ejercicio Sucesiones de Numeros', 'ejercicio9_4_5_3'),
-(10, 4, 5, 2, 20, 'Ejercicio de Sucesion Geometrica', 'ejercicio10_4_5_3'),
-(11, 4, 5, 3, 20, 'Ejercicio de Sucesion Geometrica', 'ejercicio11_4_5_3');
+INSERT INTO `ejercicio` (`idejercicio`, `idcurso`, `idgrado`, `idtema`, `PuntajeTotal`, `descripcion`, `namejsp`, `comentario`, `Dificultad`) VALUES
+(1, 2, 5, 3, 20, 'Ejercicios de angulos', 'ejercicio1_4_5_3', 'Completa los Angulos con los valores correspondientes', 'Alta'),
+(2, 2, 5, 3, 20, 'Ejercicio de Pitagoras', 'ejercicio2_4_5_3', 'Completa los angulos notables de pitagoras', 'Intermedia'),
+(3, 2, 5, 3, 20, 'Ejercicio Triangulo Rectangulo', 'ejercicio3_4_5_3', 'Completa los triangulos rectangulos con los valores corrspondientes', 'Intermedia'),
+(4, 2, 5, 3, 20, 'Ejercicio Angulos agudos', 'ejercicio4_4_5_3', 'Completa los Angulos Agudos', 'Intermedia'),
+(5, 2, 5, 3, 20, 'Ejercicio Angulos Obtusos', 'ejercicio5_4_5_3', 'Completa los angulos obtusos', 'Alta'),
+(6, 2, 5, 3, 20, 'Ejercicio Complementos', 'ejercicio6_4_5_3', 'Halla el complemento de los angulos', 'Alta'),
+(7, 4, 5, 2, 20, 'Ejercicio Sucesiones de Figuras', 'ejercicio7_4_5_3', 'Cual es la siguiente figura que debe continuar', 'Alta'),
+(8, 3, 5, 2, 20, 'Ejercicio Funciones', 'ejercicio8_4_5_3', 'Halle el valor de la siguiente variable en la ecuacion', 'Intermedia'),
+(9, 4, 5, 2, 20, 'Ejercicio Sucesiones de Numeros', 'ejercicio9_4_5_3', 'Cual es el siguiente numero', 'Baja'),
+(10, 4, 5, 2, 20, 'Ejercicio de Sucesion Aritmetica', 'ejercicio10_4_5_3', 'Halle el siguiente numero en la sucesion Aritmetica', 'Intermedia'),
+(11, 4, 5, 3, 20, 'Ejercicio de Sucesion Geometrica', 'ejercicio11_4_5_3', 'Halle el siguiente numero en la sucesion', 'Intermedia');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `evaluacion`
+-- Estructura de tabla para la tabla `evaluacion`
 --
 
 CREATE TABLE `evaluacion` (
@@ -201,7 +202,7 @@ CREATE TABLE `evaluacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `evaluacion`
+-- Volcado de datos para la tabla `evaluacion`
 --
 
 INSERT INTO `evaluacion` (`idevaluacion`, `idejercicio`, `idalumno`, `nrointentos`, `fecha_evaluacion`, `nota`) VALUES
@@ -214,12 +215,82 @@ INSERT INTO `evaluacion` (`idevaluacion`, `idejercicio`, `idalumno`, `nrointento
 (7, 7, 10101015, 2, '2019-09-18', 18),
 (8, 8, 10101015, 3, '2019-09-18', 13),
 (9, 9, 10101015, 1, '2019-09-18', 15),
-(10, 10, 10101015, 2, '2019-09-18', 13);
+(10, 10, 10101015, 2, '2019-09-18', 13),
+(11, 1, 10101012, 1, '2019-09-18', 18),
+(12, 2, 10101012, 1, '2019-09-18', 18),
+(13, 3, 10101012, 3, '2019-09-18', 12),
+(14, 4, 10101012, 2, '2019-09-18', 15),
+(15, 5, 10101012, 2, '2019-09-18', 15),
+(16, 6, 10101012, 2, '2019-09-18', 15),
+(17, 7, 10101012, 2, '2019-09-18', 18),
+(18, 1, 10101012, 1, '2019-09-18', 18),
+(19, 2, 10101012, 1, '2019-09-18', 18),
+(20, 3, 10101012, 3, '2019-09-18', 12),
+(21, 4, 10101012, 2, '2019-09-18', 15),
+(22, 5, 10101012, 2, '2019-09-18', 15),
+(23, 6, 10101013, 2, '2019-09-18', 15),
+(24, 7, 10101013, 2, '2019-09-18', 18),
+(25, 1, 10101013, 1, '2019-09-18', 18),
+(26, 2, 10101013, 1, '2019-09-18', 18),
+(27, 3, 10101013, 3, '2019-09-18', 12),
+(28, 4, 10101013, 2, '2019-09-18', 15),
+(29, 5, 10101013, 2, '2019-09-18', 15),
+(30, 6, 10101014, 2, '2019-09-18', 15),
+(31, 7, 10101014, 2, '2019-09-18', 18),
+(32, 1, 10101014, 1, '2019-09-18', 18),
+(33, 2, 10101016, 1, '2019-09-18', 18),
+(34, 3, 10101016, 3, '2019-09-18', 12),
+(35, 4, 10101022, 2, '2019-09-18', 15),
+(36, 5, 10101022, 2, '2019-09-18', 15),
+(37, 6, 10101022, 2, '2019-09-18', 15),
+(38, 7, 10101023, 2, '2019-09-18', 18),
+(39, 1, 10101055, 1, '2019-09-18', 18),
+(40, 2, 10101055, 1, '2019-09-18', 18),
+(41, 3, 10101055, 3, '2019-09-18', 12),
+(42, 4, 10101055, 2, '2019-09-18', 15),
+(43, 5, 10221015, 2, '2019-09-18', 15),
+(44, 6, 10221015, 2, '2019-09-18', 15),
+(45, 7, 10252525, 2, '2019-09-18', 18),
+(46, 1, 10252525, 1, '2019-09-18', 18),
+(47, 2, 10252525, 1, '2019-09-18', 18),
+(48, 3, 10252525, 3, '2019-09-18', 12),
+(49, 4, 10252525, 2, '2019-09-18', 15),
+(50, 5, 10263720, 2, '2019-09-18', 15),
+(51, 6, 10263720, 2, '2019-09-18', 15),
+(52, 7, 10263720, 2, '2019-09-18', 18),
+(53, 1, 11155811, 1, '2019-09-18', 18),
+(54, 2, 11155889, 1, '2019-09-18', 18),
+(55, 3, 10101016, 3, '2019-09-18', 12),
+(56, 4, 20101012, 2, '2019-09-18', 15),
+(57, 5, 20101012, 2, '2019-09-18', 15),
+(58, 6, 20101012, 2, '2019-09-18', 15),
+(59, 7, 20101055, 2, '2019-09-18', 18),
+(60, 1, 20101055, 1, '2019-09-18', 18),
+(61, 2, 20202088, 1, '2019-09-18', 18),
+(62, 3, 20585858, 3, '2019-09-18', 12),
+(63, 4, 22101013, 2, '2019-09-18', 15),
+(64, 5, 22101014, 2, '2019-09-18', 15),
+(65, 6, 25659844, 2, '2019-09-18', 15),
+(66, 7, 70558866, 2, '2019-09-18', 18),
+(67, 1, 70656960, 1, '2019-09-18', 18),
+(68, 2, 70656961, 1, '2019-09-18', 18),
+(69, 3, 10252525, 3, '2019-09-18', 12),
+(70, 4, 90002111, 2, '2019-09-18', 15),
+(71, 5, 10263720, 2, '2019-09-18', 15),
+(72, 6, 10263720, 2, '2019-09-18', 15),
+(73, 7, 10263720, 2, '2019-09-18', 18),
+(74, 1, 11155811, 1, '2019-09-18', 18),
+(75, 2, 11155889, 1, '2019-09-18', 18),
+(76, 3, 10101016, 3, '2019-09-18', 12),
+(77, 4, 90002525, 2, '2019-09-18', 15),
+(78, 5, 90002525, 2, '2019-09-18', 15),
+(79, 6, 90002525, 2, '2019-09-18', 15),
+(80, 7, 20101055, 2, '2019-09-18', 18);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grado`
+-- Estructura de tabla para la tabla `grado`
 --
 
 CREATE TABLE `grado` (
@@ -229,7 +300,7 @@ CREATE TABLE `grado` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `grado`
+-- Volcado de datos para la tabla `grado`
 --
 
 INSERT INTO `grado` (`idgrado`, `descripcion`, `nivel`) VALUES
@@ -248,7 +319,7 @@ INSERT INTO `grado` (`idgrado`, `descripcion`, `nivel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gradoxcurso`
+-- Estructura de tabla para la tabla `gradoxcurso`
 --
 
 CREATE TABLE `gradoxcurso` (
@@ -257,7 +328,7 @@ CREATE TABLE `gradoxcurso` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `gradoxcurso`
+-- Volcado de datos para la tabla `gradoxcurso`
 --
 
 INSERT INTO `gradoxcurso` (`idgrado`, `idcurso`) VALUES
@@ -342,7 +413,7 @@ INSERT INTO `gradoxcurso` (`idgrado`, `idcurso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nivelceguera`
+-- Estructura de tabla para la tabla `nivelceguera`
 --
 
 CREATE TABLE `nivelceguera` (
@@ -352,7 +423,7 @@ CREATE TABLE `nivelceguera` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `nivelceguera`
+-- Volcado de datos para la tabla `nivelceguera`
 --
 
 INSERT INTO `nivelceguera` (`idnivelceguera`, `nombre`, `puntaje`) VALUES
@@ -363,7 +434,7 @@ INSERT INTO `nivelceguera` (`idnivelceguera`, `nombre`, `puntaje`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `persona`
+-- Estructura de tabla para la tabla `persona`
 --
 
 CREATE TABLE `persona` (
@@ -375,7 +446,7 @@ CREATE TABLE `persona` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `persona`
+-- Volcado de datos para la tabla `persona`
 --
 
 INSERT INTO `persona` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `celular`) VALUES
@@ -383,7 +454,7 @@ INSERT INTO `persona` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `
 (10101012, 'Ana', 'Rojas', 'Morelia', '999998781'),
 (10101013, 'Carlos', 'Galarde', 'Morelia', '999998781'),
 (10101014, 'Ricardo', 'Amasifen', 'Palacios', '999998781'),
-(10101015, 'Joshua', 'Esteban', 'Castro', '999998781'),
+(10101015, 'Marcos', 'Jochatoma', 'Garcia', '999998781'),
 (10101016, 'Maria', 'Palacios', 'Morelia', '999998781'),
 (10101022, 'Lorena', 'Garcia', 'Quiroz', '999998781'),
 (10101023, 'Oliver', 'Rojas', 'Morelia', '999998781'),
@@ -396,7 +467,7 @@ INSERT INTO `persona` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `
 (10290003, 'Ricardo', 'ricra', 'torres', '974626407'),
 (10290004, 'Jose', 'Rojas', 'Caceres', '974626407'),
 (10290005, 'Gustavo', 'Novoa', 'Evaristo', '974626407'),
-(10290006, 'Jean Franz', 'Cordova', 'Rojas', '974626407'),
+(10290006, 'Alfredo', 'Zarate', 'Chavez', '974626407'),
 (10586974, 'John', 'Rojas', 'Stevenson', '998877654'),
 (10593365, 'Norma', 'Leon', 'Rodriguez', '998855448'),
 (11155811, 'Juliana', 'Govelan', 'Gaspar', '999888756'),
@@ -407,6 +478,7 @@ INSERT INTO `persona` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `
 (22101013, 'Hernan', 'Heredia', 'Diaz', '924525875'),
 (22101014, 'Pablo', 'Silva', 'Palacios', '924525875'),
 (25659844, 'Julio', 'Cabrera', 'Mendoza', '999887889'),
+(70533423, 'Isabel', 'Choquehuanca', 'Perez', '993456835'),
 (70558866, 'Jose', 'Arce', 'Matta', '974626407'),
 (70636363, 'Ricardo', 'Aldave', 'Caparachin', '999888756'),
 (70656960, 'Carlos', 'Acuña', 'Flores', '974626407'),
@@ -417,7 +489,7 @@ INSERT INTO `persona` (`id`, `nombre`, `apellido_paterno`, `apellido_materno`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profesor`
+-- Estructura de tabla para la tabla `profesor`
 --
 
 CREATE TABLE `profesor` (
@@ -429,7 +501,7 @@ CREATE TABLE `profesor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `profesor`
+-- Volcado de datos para la tabla `profesor`
 --
 
 INSERT INTO `profesor` (`id`, `estado`, `idgrado`, `idcurso`, `fecha_registro`) VALUES
@@ -448,7 +520,7 @@ INSERT INTO `profesor` (`id`, `estado`, `idgrado`, `idcurso`, `fecha_registro`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rol`
+-- Estructura de tabla para la tabla `rol`
 --
 
 CREATE TABLE `rol` (
@@ -457,7 +529,7 @@ CREATE TABLE `rol` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `rol`
+-- Volcado de datos para la tabla `rol`
 --
 
 INSERT INTO `rol` (`id`, `nombre`) VALUES
@@ -468,7 +540,7 @@ INSERT INTO `rol` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tema`
+-- Estructura de tabla para la tabla `tema`
 --
 
 CREATE TABLE `tema` (
@@ -478,7 +550,7 @@ CREATE TABLE `tema` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tema`
+-- Volcado de datos para la tabla `tema`
 --
 
 INSERT INTO `tema` (`idtema`, `descripcion`, `idcurso`) VALUES
@@ -489,7 +561,7 @@ INSERT INTO `tema` (`idtema`, `descripcion`, `idcurso`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -501,7 +573,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `usuario`, `clave`, `estado`, `rol_id`) VALUES
@@ -509,7 +581,7 @@ INSERT INTO `usuario` (`id`, `usuario`, `clave`, `estado`, `rol_id`) VALUES
 (10101012, 'arojas', '123456', '1', 2),
 (10101013, 'cgalarde', '123456', '1', 2),
 (10101014, 'ramasifen', '123456', '1', 2),
-(10101015, 'jesteban', '123456', '1', 2),
+(10101015, 'mjochatoma', '123456', '1', 2),
 (10101016, 'mpalacios', '123456', '1', 2),
 (10101022, 'lgarcia', '123456', '1', 2),
 (10101023, 'orojas', '123456', '1', 2),
@@ -533,6 +605,7 @@ INSERT INTO `usuario` (`id`, `usuario`, `clave`, `estado`, `rol_id`) VALUES
 (22101013, 'hheredia', '123456', '1', 2),
 (22101014, 'psilva', '123456', '1', 2),
 (25659844, 'JCabrera', '123456', '1', 2),
+(70533423, 'IChoquehuanca', '123456', '1', 2),
 (70558866, 'jarce', '123456', '1', 3),
 (70636363, 'RAldave', '123456', '1', 3),
 (70656960, 'cacuna', '123456', '1', 3),
@@ -541,11 +614,11 @@ INSERT INTO `usuario` (`id`, `usuario`, `clave`, `estado`, `rol_id`) VALUES
 (90002525, 'LAmauta', '123456', '1', 2);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `alumno`
+-- Indices de la tabla `alumno`
 --
 ALTER TABLE `alumno`
   ADD PRIMARY KEY (`id`),
@@ -554,61 +627,61 @@ ALTER TABLE `alumno`
   ADD KEY `t_grado_id1_idx` (`idgrado`);
 
 --
--- Indexes for table `curso`
+-- Indices de la tabla `curso`
 --
 ALTER TABLE `curso`
   ADD PRIMARY KEY (`idcurso`);
 
 --
--- Indexes for table `ejercicio`
+-- Indices de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
   ADD PRIMARY KEY (`idejercicio`);
 
 --
--- Indexes for table `evaluacion`
+-- Indices de la tabla `evaluacion`
 --
 ALTER TABLE `evaluacion`
   ADD PRIMARY KEY (`idevaluacion`);
 
 --
--- Indexes for table `grado`
+-- Indices de la tabla `grado`
 --
 ALTER TABLE `grado`
   ADD PRIMARY KEY (`idgrado`);
 
 --
--- Indexes for table `nivelceguera`
+-- Indices de la tabla `nivelceguera`
 --
 ALTER TABLE `nivelceguera`
   ADD PRIMARY KEY (`idnivelceguera`);
 
 --
--- Indexes for table `persona`
+-- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `profesor`
+-- Indices de la tabla `profesor`
 --
 ALTER TABLE `profesor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rol`
+-- Indices de la tabla `rol`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tema`
+-- Indices de la tabla `tema`
 --
 ALTER TABLE `tema`
   ADD PRIMARY KEY (`idtema`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
@@ -616,22 +689,20 @@ ALTER TABLE `usuario`
   ADD KEY `t_rol_id1_idx` (`rol_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `ejercicio`
+-- AUTO_INCREMENT de la tabla `ejercicio`
 --
 ALTER TABLE `ejercicio`
   MODIFY `idejercicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
 --
--- AUTO_INCREMENT for table `evaluacion`
+-- AUTO_INCREMENT de la tabla `evaluacion`
 --
 ALTER TABLE `evaluacion`
-  MODIFY `idevaluacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-COMMIT;
-
+  MODIFY `idevaluacion` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

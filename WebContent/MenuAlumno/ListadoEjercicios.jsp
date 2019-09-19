@@ -110,7 +110,7 @@
 								<td><%=listajercicios.get(i).getComentario() %></td>
 								<td><%=listajercicios.get(i).getTema() %></td>
 								<td><%=listajercicios.get(i).getDificultad() %></td>
-								<td><a href=""><i class="download-icons">Empezar</i></a></td>
+								<td><a href="<%=getServletContext().getContextPath() %>/MenuAlumno/Ejercicios/<%=listajercicios.get(i).getNamejsp()%>.jsp"><i >Empezar</i></a></td>
 							</tr>
 						<% } %> 
 						</tbody>

@@ -32,8 +32,14 @@
 	List<Evaluacion> listaEvaluaciones=(List<Evaluacion>)request.getAttribute("listaEvaluaciones");
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
+	String alumno="";
+	if(listaEvaluaciones.size()==0){
+		 alumno="Alumno sin Evaluaciones Previas";
+	}else{
+		 alumno=listaEvaluaciones.get(0).getNombrecompleto();
+
+	}
 	
-	String alumno=listaEvaluaciones.get(0).getNombrecompleto();
 	
 	
 %>
@@ -63,7 +69,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						<% for(int i=0; i<listaEvaluaciones.size(); i++){ %>
+					<% if(listaEvaluaciones!=null)	{ for(int i=0; i<listaEvaluaciones.size(); i++){ %>
 							<tr>
 							
 								<td><%=listaEvaluaciones.get(i).getCurso() %></td>
@@ -74,7 +80,7 @@
 								<td><%=listaEvaluaciones.get(i).getFecha_evaluacion() %></td>
 								<td><a href=""><i class="download-icons">Ver Detalle</i></a></td>
 							</tr>
-						<% } %> 
+						<% }} %> 
 						</tbody>
 					</table>
 			</div>

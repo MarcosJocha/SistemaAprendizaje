@@ -36,7 +36,7 @@ public class MysqlProyecto implements DAOProyecto {
 		Connection con = MySqlDAOFactory.obtenerConexion();
 		try {
 			StringBuffer sentencia=new StringBuffer();
-			sentencia.append("select ej.idejercicio, c.descripcion as curso, ej.descripcion as ejercicio, ej.comentario, t.descripcion as tema, ej.dificultad from ejercicio ej, alumno a, persona p, tema t, curso c where p.id=a.id and ej.idgrado= a.idgrado and t.idtema=ej.idtema and ej.idcurso = c.idcurso and a.id="+ idalumno+" and ej.idcurso="+idcurso+""); 
+			sentencia.append("select ej.idejercicio, c.descripcion as curso, ej.descripcion as ejercicio, ej.comentario, t.descripcion as tema, ej.dificultad,ej.namejsp from ejercicio ej, alumno a, persona p, tema t, curso c where p.id=a.id and ej.idgrado= a.idgrado and t.idtema=ej.idtema and ej.idcurso = c.idcurso and a.id="+ idalumno+" and ej.idcurso="+idcurso+""); 
 			
 			
 			PreparedStatement ps =  con.prepareStatement(sentencia.toString());
@@ -50,6 +50,7 @@ public class MysqlProyecto implements DAOProyecto {
 				ejercicio.setComentario(rs.getString("comentario"));
 				ejercicio.setTema(rs.getString("tema"));
 				ejercicio.setDificultad(rs.getString("dificultad"));
+				ejercicio.setNamejsp(rs.getString("namejsp"));
 				listEjercicios.add(ejercicio);
 			}
 			
