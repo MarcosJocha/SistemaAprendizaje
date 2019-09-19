@@ -1,36 +1,41 @@
 <!DOCTYPE html>
-<%@page import="java.util.Vector"%>
+
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="practicas.common.action.SessionParameters"%>
 <%@page import="practicas.common.bean.Usuario"%>
 <%@page import="practicas.common.bean.Persona"%>
 <%@page import="practicas.common.bean.Alumno"%>
-<%@page import="practicas.common.bean.Documento"%>
+<%@page import="practicas.common.bean.Evaluacion"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gestion Practicas</title>
+<title>Calificaciones</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <jsp:include page="/resources/include/header-resources.jsp"></jsp:include>
-<link href="<%=request.getServletContext().getContextPath() %>/MenuAlumno/css/boostrap/bootstrap.min.css" rel="stylesheet" />
-<link href="<%=request.getServletContext().getContextPath() %>/MenuAlumno/css/boostrap/bootstrap-table.min.css" rel="stylesheet" />
- <link href="<%=request.getServletContext().getContextPath() %>/MenuAlumno/css/dashboard.css" rel="stylesheet" />
+<link href="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/css/boostrap/bootstrap.min.css" rel="stylesheet" />
+<link href="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/css/boostrap/bootstrap-table.min.css" rel="stylesheet" />
+ <link href="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/css/dashboard.css" rel="stylesheet" />
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- <script src="<%=request.getServletContext().getContextPath() %>/MenuAlumno/js/bootstrap-table.min.js"></script>
- <script src="<%=request.getServletContext().getContextPath() %>/MenuAlumno/js/validator.min.js"></script>
- <script src="<%=request.getServletContext().getContextPath() %>/MenuAlumno/js/combos.js"></script>
- <script src="<%=request.getServletContext().getContextPath() %>/MenuAlumno/js/accionesMenuAlumnos.js"></script>
+ <script src="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/js/bootstrap-table.min.js"></script>
+ <script src="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/js/validator.min.js"></script>
+ <script src="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/js/combos.js"></script>
+ <script src="<%=request.getServletContext().getContextPath() %>/MenuAdministrador/js/accionesRegistroDocentes.js"></script>
 
 </head>
 
 <%
-Vector<Documento> listaDocumentos=(Vector)request.getAttribute("listadocumentos");
-
+	List<Evaluacion> listaEvaluaciones=(List<Evaluacion>)request.getAttribute("listaEvaluaciones");
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
+	
+	String alumno=listaEvaluaciones.get(0).getNombrecompleto();
+	
+	
 %>
 
 
@@ -39,40 +44,38 @@ Vector<Documento> listaDocumentos=(Vector)request.getAttribute("listadocumentos"
 		<jsp:include page="/resources/include/sidebar-menu.jsp"></jsp:include>
 		<div class="main-content">
 			<jsp:include page="/resources/include/profile-bar.jsp"></jsp:include>
-
 			<!-- Contenido -->
-			<div>Alumnos</div>
+			<div>Rendimiento:</div>
+			<br/>
+			<div class="lead alert-info"><%=alumno %></div>
 			<div>
-			<table data-search="true" id="table_telefono" data-height="600"
-						data-click-to-select="true">
+			<table class="table table-bordered">
 						<thead>
 							<tr>
 								
-								<th>Codigo</th>
-								<th>Alumno</th>
-								<th>TipoDocumento</th>
-								<th>Nombre</th>
-								<th>Estado</th>
-								<th>Archivo</th>
+								<th>Curso</th>
+								<th>Tema</th>
+								<th>Ejercicio</th>
+								<th>nrointentos</th>
+								<th>nota</th>
+								<th>Fecha</th>
+								<th>Detalle</th>
 							</tr>
 						</thead>
-						
-						<% for(int i=0; i<listaDocumentos.size(); i++){ %>
+						<tbody>
+						<% for(int i=0; i<listaEvaluaciones.size(); i++){ %>
 							<tr>
 							
-								<td><%=listaDocumentos.get(i).getIdDocumento() %></td>
-								<td><%=listaDocumentos.get(i).getNombreAlumno() %></td>
-								<td><%=listaDocumentos.get(i).getNombreDocumento() %></td>
-								<%if(listaDocumentos.get(i).getEstado().equals("PENDIENTE")){ %>
-								<td>Por Revisar</td>
-								<%}else{ %>
-								<td>Revisado</td>
-								<%} %>
-								<td><a href="Gestionar_Docente?f=eliminarDocente&dato=<%=listaDocumentos.get(i).getIdDocumento() %>")>
-								<i class="material-icons">Descargar</i>
-								</a></td>
+								<td><%=listaEvaluaciones.get(i).getCurso() %></td>
+								<td><%=listaEvaluaciones.get(i).getTema() %></td>
+								<td><%=listaEvaluaciones.get(i).getEjercicio() %></td>
+								<td><%=listaEvaluaciones.get(i).getNrointentos() %></td>
+								<td><%=listaEvaluaciones.get(i).getNota() %></td>
+								<td><%=listaEvaluaciones.get(i).getFecha_evaluacion() %></td>
+								<td><a href=""><i class="download-icons">Ver Detalle</i></a></td>
 							</tr>
 						<% } %> 
+						</tbody>
 					</table>
 			</div>
 			

@@ -7,12 +7,13 @@
 <%@page import="practicas.common.bean.Persona"%>
 <%@page import="practicas.common.bean.Alumno"%>
 <%@page import="practicas.common.bean.Evaluacion"%>
+<%@page import="practicas.common.bean.Ejercicio"%>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Listado Evaluaciones por Alumno</title>
+<title>Listado Ejercicios</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <jsp:include page="/resources/include/header-resources.jsp"></jsp:include>
@@ -29,12 +30,14 @@
 </head>
 
 <%
-	List<Evaluacion> listaEvaluaciones=(List<Evaluacion>)request.getAttribute("listaEvaluaciones");
+	List<Ejercicio> listajercicios=(List<Ejercicio>)request.getAttribute("listajercicios");
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
 	Persona oPersona = oUsuario.getPersona();
+	String idalumno = oPersona.getIdPersona();
+	//request.setAttribute("idalumno", idalumno);
+	System.out.print("ID->"+idalumno);
 	
-	String alumno=listaEvaluaciones.get(0).getNombrecompleto();
-	
+	String curso=listajercicios.get(0).getCurso();
 	
 %>
 
@@ -45,34 +48,69 @@
 		<div class="main-content">
 			<jsp:include page="/resources/include/profile-bar.jsp"></jsp:include>
 			<!-- Contenido -->
-			<div>Rendimiento:</div>
+			
+			<form class="form-horizontal" name="formulario"  method="post"
+				action = "<%=getServletContext().getContextPath() %>/listarEjercicios?id=<%=idalumno%>">
+				
+					<input type="hidden" value="insert" name="tipoRegistro" id="tipoRegistro">
+					<div class="row">
+						<div class="col-md-6">
+
+
+								<div class="form-group">
+									<label for="escuela" class="col-sm-3 control-label">Curso:</label>
+									<div class="col-sm-9">
+										<select size="1" class="form-control input-sm" name="curso">
+											<option value="1">Matematicas</option>
+											<option value="2">Trigonometria</option>
+											<option value="3">Algebra</option>
+											<option value="4">Aritmetica</option>
+											<option value="5">Geometria</option>
+											<option value="6">Razonamiento Matematico</option>
+											<option value="7">Logica</option>
+										</select>
+									</div>
+								</div>
+
+							<div class="form-group" style="text-align:center" >
+							<input style="margin-top:20px" type="submit" value="Ver Ejercicios" class="btn btn-primary">
+						</div>
+							
+							
+						</div>
+						<div class="col-md-6">
+
+						</div>
+					</div>
+				</form>
+				
+				
+			<div>Ejercicios Curso:</div>
 			<br/>
-			<div class="lead alert-info"><%=alumno %></div>
+			<div class="lead alert-info"><%=curso%></div>
 			<div>
 			<table class="table table-bordered">
 						<thead>
 							<tr>
 								
 								<th>Curso</th>
+								<th>Descripcion</th>
+								<th>Comentario</th>
 								<th>Tema</th>
-								<th>Ejercicio</th>
-								<th>nrointentos</th>
-								<th>nota</th>
-								<th>Fecha</th>
-								<th>Detalle</th>
+								<th>Dificultad</th>
+								<th>Enlace</th>
 							</tr>
 						</thead>
 						<tbody>
-						<% for(int i=0; i<listaEvaluaciones.size(); i++){ %>
+						<% for(int i=0; i<listajercicios.size(); i++){ %>
 							<tr>
 							
-								<td><%=listaEvaluaciones.get(i).getCurso() %></td>
-								<td><%=listaEvaluaciones.get(i).getTema() %></td>
-								<td><%=listaEvaluaciones.get(i).getEjercicio() %></td>
-								<td><%=listaEvaluaciones.get(i).getNrointentos() %></td>
-								<td><%=listaEvaluaciones.get(i).getNota() %></td>
-								<td><%=listaEvaluaciones.get(i).getFecha_evaluacion() %></td>
-								<td><a href=""><i class="download-icons">Ver Detalle</i></a></td>
+								<td><%=listajercicios.get(i).getCurso() %></td>
+								<td><%=listajercicios.get(i).getDescripcion() %></td>
+								<td><%=listajercicios.get(i).getComentario() %></td>
+								<td><%=listajercicios.get(i).getTema() %></td>
+								<td><%=listajercicios.get(i).getDificultad() %></td>
+								<td><a href=""><i class="download-icons">Empezar</i></a></td>
 							</tr>
 						<% } %> 
 						</tbody>

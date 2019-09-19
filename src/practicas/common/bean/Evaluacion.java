@@ -4,6 +4,42 @@ public class Evaluacion {
 
 	
 	private int idevaluacion;
+	public int getCantidadEjercicios() {
+		return cantidadEjercicios;
+	}
+	public void setCantidadEjercicios(int cantidadEjercicios) {
+		this.cantidadEjercicios = cantidadEjercicios;
+	}
+	public int getMayornumIntentos() {
+		return MayornumIntentos;
+	}
+	public void setMayornumIntentos(int mayornumIntentos) {
+		MayornumIntentos = mayornumIntentos;
+	}
+	public double getPromedio() {
+		return promedio;
+	}
+	public void setPromedio(double promedio) {
+		this.promedio = promedio;
+	}
+	public double getAvance() {
+		return avance;
+	}
+	public void setAvance(double avance) {
+		this.avance = avance;
+	}
+	public int getEstado() {
+		return estado;
+	}
+	public void setEstado(int estado) {
+		this.estado = estado;
+	}
+	private int cantidadEjercicios;
+	private int MayornumIntentos;
+	private double promedio;
+	private double avance;
+	private int estado;
+	
 	public int getIdevaluacion() {
 		return idevaluacion;
 	}

@@ -3,10 +3,9 @@
 <%@page import="practicas.common.bean.Persona"%>
 <%
 	Usuario oUsuario = (Usuario) request.getSession(false).getAttribute(SessionParameters.USUARIO.text());
-	Persona oPersona =  oUsuario.getPersona();
-	
+	Persona oPersona =  oUsuario.getPersona();	
 	String rol = oUsuario.getRol().toString();	
-		
+	String idalumno = oPersona.getIdPersona();
 %>
 
 
@@ -23,10 +22,10 @@
 					href="<%=request.getContextPath()%>/MenuAlumno/Cursos.jsp"><span
 						class="title">Cursos</span></a></li>
 				<li><a
-					href="<%=request.getContextPath()%>/MenuAlumno/Calificaciones.jsp"><span
+					href="<%=request.getContextPath()%>/calificaciones?id=<%=idalumno%>"><span
 						class="title">Calificaciones</span></a></li>
 				<li><a
-					href="<%=request.getContextPath()%>/MenuAlumno/Avance.jsp"><span
+					href="<%=request.getContextPath()%>/avanceAlumno?id=<%=idalumno%>"><span
 						class="title">Avance</span></a></li>				
 			
 	

@@ -6,6 +6,7 @@ import practicas.common.bean.Evaluacion;
 import practicas.common.bean.Profesor;
 import practicas.common.bean.Alumno;
 import practicas.common.bean.Documento;
+import practicas.common.bean.Ejercicio;
 import practicas.common.bean.Solicitud;
 
 import java.sql.SQLException;
@@ -20,4 +21,6 @@ public interface DAOProyecto {
 	public Persona RegistroAlumno(Persona persona) throws Exception;
 	public Persona RegistroDocente(Persona persona) throws Exception;
 	public List<Evaluacion> listadoEvaluaciones(String idalumno) throws Exception;
+	public List<Ejercicio> listadoEjercicios(String idalumno, String idcurso) throws Exception;
+	public List<Evaluacion> AvanceAlumno(String idalumno) throws Exception;
 }

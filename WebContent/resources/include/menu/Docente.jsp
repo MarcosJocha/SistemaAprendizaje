@@ -18,7 +18,7 @@
 		<ul>
 			<%if(rol.equalsIgnoreCase("Profesores")){
 %>	
-			<li><a href="<%=request.getContextPath()%>/listarAlumnosProfesor?id=<%=idprofesor%>"><span class="title">Alumnos</span></a>
+			<li><a href="<%=request.getContextPath()%>/listarAlumnosProfesor?id=<%=idprofesor%>"><span class="title">Mis Alumnos</span></a>
 			<li><a href="<%=request.getContextPath()%>/MenuDocente/Cursos.jsp"><span class="title">Cursos</span></a>			
 			<li><a href="<%=request.getContextPath()%>/RendimientoAlumnoDocente"><span class="title">Rendimiento</span></a>			
 		

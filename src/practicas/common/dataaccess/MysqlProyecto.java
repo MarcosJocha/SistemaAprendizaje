@@ -13,6 +13,7 @@ import practicas.common.bean.Usuario;
 import practicas.common.bean.Profesor;
 import practicas.common.bean.Alumno;
 import practicas.common.bean.Documento;
+import practicas.common.bean.Ejercicio;
 import practicas.common.bean.Evaluacion;
 import practicas.common.bean.Solicitud;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -28,6 +29,36 @@ import practicas.login.dataaccess.interfaces.DAOLogin;
 
 public class MysqlProyecto implements DAOProyecto {
 
+	//listadoEjercicios
+	@Override
+	public List<Ejercicio> listadoEjercicios(String idalumno, String idcurso) throws Exception {
+		List<Ejercicio> listEjercicios = new ArrayList<Ejercicio>();
+		Connection con = MySqlDAOFactory.obtenerConexion();
+		try {
+			StringBuffer sentencia=new StringBuffer();
+			sentencia.append("select ej.idejercicio, c.descripcion as curso, ej.descripcion as ejercicio, ej.comentario, t.descripcion as tema, ej.dificultad from ejercicio ej, alumno a, persona p, tema t, curso c where p.id=a.id and ej.idgrado= a.idgrado and t.idtema=ej.idtema and ej.idcurso = c.idcurso and a.id="+ idalumno+" and ej.idcurso="+idcurso+""); 
+			
+			
+			PreparedStatement ps =  con.prepareStatement(sentencia.toString());
+			ResultSet rs = ps.executeQuery();
+			Ejercicio ejercicio;
+			while (rs.next()) {
+				ejercicio = new Ejercicio();
+				ejercicio.setIdejercicio(rs.getInt("idejercicio"));
+				ejercicio.setCurso(rs.getString("curso"));	
+				ejercicio.setDescripcion(rs.getString("ejercicio"));
+				ejercicio.setComentario(rs.getString("comentario"));
+				ejercicio.setTema(rs.getString("tema"));
+				ejercicio.setDificultad(rs.getString("dificultad"));
+				listEjercicios.add(ejercicio);
+			}
+			
+			MySqlDAOFactory.close(con);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		return listEjercicios;
+	}
 	
 	
 	@Override
@@ -159,7 +190,7 @@ public class MysqlProyecto implements DAOProyecto {
 		Connection con = MySqlDAOFactory.obtenerConexion();
 		try {
 			StringBuffer sentencia=new StringBuffer();
-			sentencia.append("  select p.id as codigo,CONCAT(p.nombre,' ', p.apellido_paterno,' ', p.apellido_materno) AS nombrecompleto,c.descripcion as curso,t.descripcion as tema,ej.descripcion as ejercicio,ev.fecha_evaluacion,ev.nrointentos,ev.nota  from evaluacion ev, ejercicio ej, persona p, alumno a, curso c,tema t where ev.idejercicio=ej.idejercicio  and p.id=a.id and c.idcurso=ej.idcurso and ej.idtema=t.idtema and p.id="+ idalumno+ 
+			sentencia.append("  select p.id as codigo,CONCAT(p.nombre,' ', p.apellido_paterno,' ', p.apellido_materno) AS nombrecompleto,c.descripcion as curso,t.descripcion as tema,ej.descripcion as ejercicio,ev.fecha_evaluacion,ev.nrointentos,ev.nota  from evaluacion ev, ejercicio ej, persona p, alumno a, curso c,tema t where ev.idejercicio=ej.idejercicio  and p.id=a.id and c.idcurso=ej.idcurso and ev.idalumno= a.id and ej.idtema=t.idtema and p.id="+ idalumno+ 
 					""); 
 
 			PreparedStatement ps =  con.prepareStatement(sentencia.toString());
@@ -184,6 +215,36 @@ public class MysqlProyecto implements DAOProyecto {
 		return listEvaluaciones;
 	}
 	
+	
+	
+	@Override
+	public List<Evaluacion> AvanceAlumno(String idalumno) throws Exception {
+		List<Evaluacion> listEvaluaciones = new ArrayList<Evaluacion>();
+		Connection con = MySqlDAOFactory.obtenerConexion();
+		try {
+			StringBuffer sentencia=new StringBuffer();
+			sentencia.append("select  c.descripcion as curso, t.descripcion as tema,count(a.id) as CantidadEjercicios,max(ev.nrointentos) as MayorNumIntentos,AVG(ev.nota) as Promedio from evaluacion ev, ejercicio ej, alumno a, curso c,tema t where ev.idejercicio=ej.idejercicio and c.idcurso=ej.idcurso and ej.idtema=t.idtema and a.id=ev.idalumno and a.id="+idalumno+ " group by curso,tema" ); 
+
+			System.out.print("SentenciaAvance "+sentencia+"|Fin");
+
+			PreparedStatement ps =  con.prepareStatement(sentencia.toString());
+			ResultSet rs = ps.executeQuery();
+			Evaluacion evaluacion;
+			while (rs.next()) {
+				evaluacion = new Evaluacion();
+				evaluacion.setCurso(rs.getString("curso"));
+				evaluacion.setTema(rs.getString("tema"));
+				evaluacion.setCantidadEjercicios(rs.getInt("CantidadEjercicios"));
+				evaluacion.setMayornumIntentos(rs.getInt("MayorNumIntentos"));
+				evaluacion.setPromedio(rs.getDouble("Promedio"));
+				listEvaluaciones.add(evaluacion);
+			}
+			MySqlDAOFactory.close(con);
+		} catch (Exception e) {
+			System.out.print(e.getMessage());
+		}
+		return listEvaluaciones;
+	}
 	
 	@Override
 	public List<Persona> listadoProfesores() throws Exception {

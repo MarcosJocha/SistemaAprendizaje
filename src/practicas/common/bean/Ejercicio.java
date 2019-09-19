@@ -65,4 +65,35 @@ public class Ejercicio {
 	private String namejsp;
 	private int exitoupdate;
 	private int exitoinsert;
+	
+	
+	
+	private String curso;
+	public String getCurso() {
+		return curso;
+	}
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+	public String getComentario() {
+		return comentario;
+	}
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+	public String getTema() {
+		return tema;
+	}
+	public void setTema(String tema) {
+		this.tema = tema;
+	}
+	public String getDificultad() {
+		return dificultad;
+	}
+	public void setDificultad(String dificultad) {
+		this.dificultad = dificultad;
+	}
+	private String comentario;
+	private String tema;
+	private String dificultad;
 }

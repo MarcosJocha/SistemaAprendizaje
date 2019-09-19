@@ -43,7 +43,7 @@
 			<jsp:include page="/resources/include/profile-bar.jsp"></jsp:include>
 
 			<!-- Contenido -->
-			<div>Alumnos</div>
+			<div>Mis Alumnos</div>
 			<div>
 			<table class="table table-bordered">
 						<thead>
