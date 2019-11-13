@@ -135,20 +135,21 @@
 							
 							<fieldset>
 								<legend align="left">Datos Ceguera</legend>
-								<label class="col-sm-3 control-label">Test Ceguera:</label>
-									<div class="col-sm-9">
+								
 								<div class="form-group">
-									<a href="#" onclick='javascript:window.open("<%=request.getContextPath()%>/MenuAdministrador/TestCeguera.jsp", "_blank", "resizable=1,height=880,width=840");' title='Test Ceguera'><img src="<%=request.getContextPath()%>/MenuAdministrador/img/ceguera.png" alt=""> </a>
+								<div class="col-sm-12">
+								<input type="file">
 								</div>
+									
 								</div>
 								
 								<div class="form-group">
-									<label for="escuela" class="col-sm-3 control-label">Puntaje Test Ceguera:</label>	
+									<label for="escuela" class="col-sm-3 control-label">Nivel Ceguera:</label>	
 									<div class="col-sm-9">
 										<select size="1" class="form-control input-sm" name="nivelceguera">
-											<option value="1">20</option>
-											<option value="2">100</option>
-											<option value="3">150</option>
+											<option value="1">Severa</option>
+											<option value="2">Intermedia</option>
+											<option value="3">Aguda</option>
 										</select>
 									</div>
 								</div>
