@@ -1,2 +1,0 @@
-package practicas.efectivas.servlet;
-
